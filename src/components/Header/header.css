@@ -1,0 +1,103 @@
+.myNavBar {
+  background-color: #fff;
+  margin: 0 30px;
+}
+
+.myNavBar .navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--headingColor);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--primary-color);
+  font-size: 15px;
+  font-weight: 500;
+}
+.navbarButtons .btn {
+  padding: 0.3rem 0.75rem;
+  font-size: 14px;
+}
+.navbarButtons .login,
+.searchBtn .search,
+.see-more .btn {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--primary-color);
+  background-color: #fff;
+  border-color: var(--primary-color);
+  outline: none;
+}
+.navbarButtons .login .user {
+  margin-right: 6px;
+}
+.navbarButtons .btn-outline-success:hover,
+.searchBtn .search:hover,
+.see-more .btn:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  outline: none;
+}
+.navbarButtons .register,
+.publish-rideRow-col1 .btn {
+  color: white;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  outline: none;
+}
+.navbarButtons .register:hover,
+.publish-rideRow-col1 .btn:hover {
+  color: var(--primary-color);
+  background-color: #fff;
+}
+
+/* header */
+.header {
+  margin: 80px 40px;
+}
+.mainRow .mainRowCol1 {
+  width: 35%;
+}
+.mainRowCol1 h2 {
+  font-weight: 600;
+  padding: 20px 0;
+}
+.mainRowCol1 input {
+  border-radius: 5px;
+  height: 35px;
+  background-color: rgb(247, 247, 247);
+}
+.mainInnerRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: row;
+  margin-top: 40px;
+}
+.mainInnerRow input[type='date'] {
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+.mainInnerRow .user {
+  padding: 5px 12px;
+  background-color: rgb(247, 247, 247);
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+.user .userIcon {
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.header .mainRowCol2 {
+  width: 50%;
+  margin-left: 30px;
+}
+
+@media only screen and (max-width: 992) {
+  .header .mainRowCol2,
+  .header .mainRowCol1 {
+    width: 100%;
+    /* margin: 0; */
+  }
+}

@@ -1,13 +1,63 @@
-body {
+/* Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Robot slap font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Slab:wght@200;300;400;500;600;700;800;900&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body,
+html {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  width: 100%;
+  overflow: auto;
+}
+.container {
+  width: 82%;
+  margin: 0 auto;
+}
+p {
+  color: var(--text-color);
+  font-weight: 400;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+  font-family: 'Roboto Slab', serif;
+  color: #342d7e;
+}
+
+:root {
+  --bgColor: #f1f5fd;
+  --primary-color: #4f56ff;
+  --text-color: #333333;
+  --shadowColor: lightgray;
+  --headingColor: #342d7e;
+}
+
+/* --------- Link ----------- */
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* ------------------------------ Responsive media queries ------------------------------ */
+@media (min-width: 1500px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container.xxl {
+    max-width: 1500px !important;
+  }
 }
