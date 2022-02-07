@@ -42,7 +42,7 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
-            <div className="navbarButtons d-flex">
+            <div className="navbarButtons d-flex flex-wrap">
               <button
                 className="btn btn-outline-success login me-2"
                 type="submit"

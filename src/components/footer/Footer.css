@@ -1,0 +1,41 @@
+.Footer {
+  background-color: #f1f1f1;
+}
+.FooterRow {
+  padding: 30px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 70%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.FooterRowCol ul li a {
+  color: var(--headingColor);
+  font-weight: 500;
+  font-size: 15px;
+}
+.FooterRowCol ul li a:hover {
+  text-decoration: underline;
+  color: var(--headingColor);
+}
+.FooterSocialCol h5 {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.FooterSocialCol svg {
+  font-size: 30px;
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+.FooterSocialCol svg:hover {
+  color: #3b42ff;
+}
+.footerCopyright {
+  background-color: #dbdbdb;
+  text-align: center;
+}
+.footerCopyright h6 {
+  font-weight: 600;
+  padding: 10px 0;
+}

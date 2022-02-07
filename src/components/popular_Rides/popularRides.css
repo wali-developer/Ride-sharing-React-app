@@ -48,3 +48,20 @@
   font-size: 16px;
   font-weight: 600;
 }
+
+@media only screen and (max-width: 400px) {
+  .popularRidesCircle {
+    width: 150px;
+    height: 150px;
+  }
+  .popularRidesCircle h6 {
+    font-size: 15px;
+  }
+  .popularRidesCircle .arrowIcon {
+    font-size: 25px;
+    margin: 6px 0;
+  }
+  .popularRidesRow {
+    padding: 30px 0;
+  }
+}

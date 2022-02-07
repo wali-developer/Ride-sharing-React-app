@@ -4,7 +4,7 @@ import './popularRides.css';
 
 const PopularRide = ({ GoingFrom, GoingTo }) => {
   return (
-    <div className="col-12 col-lg-3 popularRidesCol">
+    <div className="col-12 col-sm-6 col-md-6 col-lg-3  popularRidesCol">
       <div className="popularRidesCircle">
         <h6>{GoingFrom}</h6>
         <FaAngleDoubleDown className="arrowIcon" />

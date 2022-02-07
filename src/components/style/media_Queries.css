@@ -1,0 +1,48 @@
+@media only screen and (max-width: 992px) {
+  .header .mainRowCol2,
+  .header .mainRowCol1 {
+    width: 100%;
+  }
+  .mainInnerRow {
+    justify-content: space-around;
+    margin-bottom: 40px;
+  }
+  .header .mainRowCol2 {
+    margin: 30px 0;
+  }
+  .popularRidesCol {
+    margin: 20px 0;
+  }
+  .FooterRow {
+    width: 100%;
+  }
+  .FooterSocialCol {
+    margin: 30px 0;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .contianer {
+    width: 100%;
+  }
+  .header {
+    margin: 80px 20px;
+  }
+  .RideServicesRowCol {
+    padding-right: 0;
+  }
+  .publish-rideRow,
+  .publish-rideRow-col1 {
+    padding: 0 0;
+  }
+  .popularRidesRow {
+    padding: 30px 0;
+    margin: 0 auto;
+  }
+  .popularRidesCol {
+    display: flex;
+    justify-content: center;
+  }
+  .FooterSocialCol {
+    margin: 30px auto;
+  }
+}
