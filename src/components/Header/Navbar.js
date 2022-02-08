@@ -1,15 +1,16 @@
 import React from 'react';
 import './header.css';
 import { FaUserAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <section className="myNavBar">
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link to={'/'} className="navbar-brand">
             TrustiCar
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -27,35 +28,39 @@ const Navbar = () => {
               // style={{--bsScrollHeight: "100px"}}
             >
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">
+                <Link to="#" className="nav-link" href="#">
                   Blogs
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link to="#" className="nav-link" href="#">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link to="#" className="nav-link" href="#">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="navbarButtons d-flex flex-wrap">
-              <button
-                className="btn btn-outline-success login me-2"
-                type="submit"
-              >
-                <FaUserAlt className="user" />
-                Login
-              </button>
-              <button
-                className="btn btn-outline-success register"
-                type="submit"
-              >
-                Register
-              </button>
+              <Link to="/login">
+                <button
+                  className="btn btn-outline-success login me-2"
+                  type="submit"
+                >
+                  <FaUserAlt className="user" />
+                  Login
+                </button>
+              </Link>
+              <Link to="/register">
+                <button
+                  className="btn btn-outline-success register"
+                  type="submit"
+                >
+                  Register
+                </button>
+              </Link>
             </div>
           </div>
         </div>

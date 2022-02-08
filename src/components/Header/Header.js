@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUsers } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -32,12 +33,14 @@ const Header = () => {
                   <span>1</span>
                 </div>
                 <div className="searchBtn">
-                  <button
-                    className="btn btn-outline-success search"
-                    type="submit"
-                  >
-                    Search
-                  </button>
+                  <Link to="/search">
+                    <button
+                      className="btn btn-outline-success search"
+                      type="submit"
+                    >
+                      Search
+                    </button>
+                  </Link>
                 </div>
               </div>
               {/* <button type="submit" class="btn btn-primary">Submit</button> */}

@@ -4,7 +4,7 @@
 /* Robot slap font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Slab:wght@200;300;400;500;600;700;800;900&display=swap');
 
-@import url('./components/style/media_Queries.css');
+@import url('./media_Queries.css');
 
 * {
   margin: 0;
@@ -19,6 +19,10 @@ html {
   width: 100%;
   overflow: auto;
 }
+::selection {
+  background-color: var(--primary-color);
+  color: #fff;
+}
 .container {
   width: 82%;
   margin: 0 auto;
@@ -27,6 +31,7 @@ p {
   color: var(--text-color);
   font-weight: 400;
 }
+
 h1,
 h2,
 h3,

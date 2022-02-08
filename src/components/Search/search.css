@@ -1,0 +1,67 @@
+.searchedCities,
+.searchCard {
+  padding: 5px 10px;
+  background-color: #e9e9e9;
+  border-radius: 15px;
+  width: 600px;
+  max-width: 100%;
+  margin: 40px auto;
+}
+.searchIcon {
+  margin: 0 20px;
+  font-weight: bolder;
+  font-size: 25px;
+}
+.searchedCities h5 {
+  font-weight: 600;
+  font-size: 16px;
+}
+.arrow {
+  margin: 0 7px;
+}
+.availableRides {
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.availableRides h4 {
+  font-weight: 600;
+}
+.availableRides p,
+.availableRides span {
+  font-weight: 500;
+  color: var(--text-color);
+}
+.searchCard {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.356);
+  padding: 20px;
+}
+.searchCard-content-col svg {
+  margin: 0 10px;
+  color: black;
+  font-size: 20px;
+}
+.cardUser {
+  margin: 20px 0 0 0;
+}
+.cardUser .userIcon {
+  font-size: 40px;
+  margin: 0 10px 0 0;
+  color: rgb(156, 156, 156);
+}
+.cardUser span {
+  font-size: 17px;
+  color: var(--headingColor);
+  font-weight: 600;
+}
+.price {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 576px) {
+  .searchCard-content-col {
+    margin-bottom: 20px;
+  }
+}

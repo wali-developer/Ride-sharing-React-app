@@ -2,10 +2,16 @@
   background-color: #fff;
   margin: 0 30px;
 }
+.navbar-nav-scroll {
+  --bs-scroll-height: '100px';
+}
 
 .myNavBar .navbar-brand {
   font-size: 1.8rem;
   font-weight: bold;
+  color: var(--headingColor);
+}
+.myNavBar .navbar-brand:hover {
   color: var(--headingColor);
 }
 
@@ -14,7 +20,9 @@
   font-size: 15px;
   font-weight: 500;
 }
-.navbarButtons .btn {
+
+.navbarButtons .btn,
+.primaryBtn {
   padding: 0.3rem 0.75rem;
   font-size: 14px;
 }
@@ -39,14 +47,16 @@
   outline: none;
 }
 .navbarButtons .register,
-.publish-rideRow-col1 .btn {
+.publish-rideRow-col1 .btn,
+.primaryBtn {
   color: white;
   background-color: var(--primary-color);
   border: 1px solid var(--primary-color);
   outline: none;
 }
 .navbarButtons .register:hover,
-.publish-rideRow-col1 .btn:hover {
+.publish-rideRow-col1 .btn:hover,
+.primaryBtn:hover {
   color: var(--primary-color);
   background-color: #fff;
 }

@@ -1,0 +1,29 @@
+.publish-ride-container {
+  background-image: url('/public/images/pic3.svg');
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+  width: 100%;
+  height: 60vh;
+}
+.publish-ride-form h1 {
+  font-weight: 700;
+  text-align: center;
+}
+.publish-ride-form input {
+  padding: 10px 20px;
+  background-color: rgb(243, 243, 243);
+  border-radius: 30px;
+}
+.publish-ride-form {
+  width: 45%;
+  max-width: 100%;
+  margin-top: 70px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.171);
+  border-radius: 20px;
+  padding: 0 40px 40px 40px;
+}
+.passenger-needed .icon {
+  font-size: 22px;
+  color: var(--primaryColor);
+}

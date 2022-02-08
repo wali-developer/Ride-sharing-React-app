@@ -1,5 +1,6 @@
 import React from 'react';
 import './PublishRide.css';
+import { Link } from 'react-router-dom';
 
 const PublishRide = () => {
   return (
@@ -9,9 +10,11 @@ const PublishRide = () => {
           <div className="col-12 col-md-6 publish-rideRow-col1">
             <h2>Want to drive ?</h2>
             <p>Let's make your journey more momoriable and comfortable.</p>
-            <button className="btn btn-outline-success">
-              Publish Your Ride
-            </button>
+            <Link to="/publishride">
+              <button className="btn btn-outline-success">
+                Publish Your Ride
+              </button>
+            </Link>
           </div>
           <div className="col-12 col-md-6">
             <img src="images/publishRide.svg" className="img-fluid" />
