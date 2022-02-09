@@ -19,6 +19,12 @@
   .FooterSocialCol {
     margin: 30px 0;
   }
+  .contact .contactCol1 {
+    text-align: center;
+  }
+  .contact {
+    padding: 50px 0px;
+  }
 }
 @media only screen and (max-width: 576px) {
   .contianer {
@@ -44,5 +50,19 @@
   }
   .FooterSocialCol {
     margin: 30px auto;
+  }
+  .contact {
+    padding: 50px 0px;
+  }
+  .error404 {
+    width: 100%;
+    padding: 70px 20px;
+  }
+  .error404 h1 {
+    font-size: 60px;
+    letter-spacing: 1px;
+  }
+  .error404 p {
+    font-size: 13px;
   }
 }

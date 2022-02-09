@@ -12,15 +12,23 @@ import FooterLinks from './FooterLinks';
 const FooterCol = [
   {
     link1: 'How it works',
+    link1url: '/',
     link2: 'About Us',
+    link2url: '/about',
     link3: 'Contact Us',
+    link3url: '/',
     link4: 'Help',
+    link4url: '/',
   },
   {
     link1: 'Blogs',
+    link1url: '/',
     link2: 'Privacy and Policy',
+    link2url: '/',
     link3: 'Publish Ride',
+    link3url: '/publishride',
     link4: 'Book a Ride',
+    link4url: '/search',
   },
 ];
 

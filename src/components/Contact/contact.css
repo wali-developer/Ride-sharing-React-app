@@ -1,0 +1,44 @@
+.contact {
+  padding: 50px 80px;
+}
+
+.contact .contactCol1 {
+  padding: 0;
+}
+
+.contactCol1 h1 {
+  font-weight: 700;
+  text-align: center;
+}
+.contactCol1 p {
+  padding: 15px 0;
+  color: var(--text-color);
+  font-size: 14px;
+  text-align: center;
+}
+
+.formBtn {
+  border-radius: 30px;
+  padding: 5px 0;
+  background-color: var(--primary-color);
+  border: none;
+  font-size: 14px;
+  border: 1px solid var(--primary-color);
+}
+.formBtn:hover {
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+.inputs input,
+.inputs textarea {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.inputs .form-check-input {
+  padding: 5px;
+}
+.inputs .form-check-label {
+  font-size: 14px;
+}

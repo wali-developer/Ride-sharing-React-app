@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './header.css';
 import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [show, setShow] = React.useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', fixedNavbar);
+  }, []);
+
+  // to fix the navbar when scrolling down
+  const fixedNavbar = () => {
+    if (window.scrollY >= '45') {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  };
   return (
     <section className="myNavBar">
-      <nav className="navbar navbar-expand-lg navbar-light">
+      <nav
+        className={
+          show
+            ? 'navbar fixed-top navbarbg navbar-expand-lg navbar-light'
+            : 'navbar navbar-expand-lg navbar-light'
+        }
+        id="fixedNavbar"
+      >
         <div className="container-fluid">
           <Link to={'/'} className="navbar-brand">
             TrustiCar
@@ -23,23 +44,20 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarScroll">
-            <ul
-              className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-              // style={{--bsScrollHeight: "100px"}}
-            >
+            <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
               <li className="nav-item">
-                <Link to="#" className="nav-link" href="#">
-                  Blogs
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="#" className="nav-link" href="#">
+                <Link to="/about" className="nav-link" href="#">
                   About Us
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="#" className="nav-link" href="#">
+                <Link to="/contact" className="nav-link" href="#">
                   Contact Us
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/search" className="nav-link" href="#">
+                  Search
                 </Link>
               </li>
             </ul>

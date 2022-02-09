@@ -1,8 +1,25 @@
-import React from 'react';
-import { FaUsers } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+// import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai';
+import PassengerDetails from './PassengerDetails';
 
 const Header = () => {
+  const [passengerNeeded, setPassengerNeeded] = useState(0);
+  const [show, setShow] = useState(false);
+
+  const plus = () => {
+    setPassengerNeeded(passengerNeeded + 1);
+  };
+  const minus = () => {
+    setPassengerNeeded(passengerNeeded - 1);
+  };
+
+  // show dropdown content
+  const showDropdown = () => {
+    setShow(!show);
+  };
+
   return (
     <section>
       <div className="header">
@@ -28,12 +45,19 @@ const Header = () => {
                 <div className="date">
                   <input type="date" />
                 </div>
-                <div className="user">
-                  <FaUsers className="userIcon" />
-                  <span>1</span>
+                <div className="user" onClick={showDropdown}>
+                  <FaUser className="userIcon" />
+                  <span>{passengerNeeded}</span>
                 </div>
+                {show ? (
+                  <PassengerDetails
+                    plus={plus}
+                    minus={minus}
+                    passengerNeeded={passengerNeeded}
+                  />
+                ) : null}
                 <div className="searchBtn">
-                  <Link to="/search">
+                  <Link to="/availablerides">
                     <button
                       className="btn btn-outline-success search"
                       type="submit"
@@ -43,7 +67,6 @@ const Header = () => {
                   </Link>
                 </div>
               </div>
-              {/* <button type="submit" class="btn btn-primary">Submit</button> */}
             </form>
           </div>
           <div className="col-12 col-md-6 mainRowCol2">

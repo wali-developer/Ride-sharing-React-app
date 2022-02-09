@@ -1,0 +1,41 @@
+.errorSection {
+  background-color: var(--bgColor);
+}
+.error404 {
+  text-align: center;
+  width: 450px;
+  padding: 70px 0 100px 0;
+}
+
+.error404 h1 {
+  font-size: 100px;
+  font-weight: 800;
+  padding: 20px 0;
+  color: #6f5de7;
+  letter-spacing: 2px;
+}
+.error404 h2 {
+  font-weight: bold;
+}
+.error404 p {
+  padding: 10px 0 15px 0;
+  font-size: 14px;
+  font-weight: normal;
+}
+.error404 button {
+  border: none;
+}
+.error404 a {
+  color: var(--primary-color);
+  font-size: 14px !important;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-weight: 600px;
+  text-decoration: none;
+  border: 1px solid var(--primary-color);
+  background-color: #fff;
+}
+.error404 a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
