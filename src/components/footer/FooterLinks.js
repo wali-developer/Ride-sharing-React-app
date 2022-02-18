@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 const FooterLinks = ({ FooterCol }) => {
   return FooterCol.map((item, index) => {
@@ -17,24 +18,24 @@ const FooterLinks = ({ FooterCol }) => {
       <div className="col-12 col-sm-6 col-md-4 FooterRowCol" key={index}>
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link" href={link1url}>
+            <Link className="nav-link" to={link1url}>
               {link1}
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href={link2url}>
+            <Link className="nav-link" to={link2url}>
               {link2}
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href={link3url}>
+            <Link className="nav-link" to={link3url}>
               {link3}
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href={link4url}>
+            <Link className="nav-link" to={link4url}>
               {link4}
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

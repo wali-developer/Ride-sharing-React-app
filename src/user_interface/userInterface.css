@@ -1,0 +1,82 @@
+.user-dashboard {
+  width: 100%;
+  background-color: rgb(217, 219, 255);
+  height: 100vh;
+}
+.logo {
+  padding: 20px 30px;
+}
+.logo .navbar-brand {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--headingColor);
+}
+.userDashboard-row {
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.12);
+  border-radius: 15px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+.sidebar {
+  background-color: #fff;
+}
+.sidebar-content {
+  padding: 20px;
+}
+.sidebar-header {
+  text-align: center;
+}
+.user-image {
+  margin: 0 auto;
+}
+.user-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  color: lightgray;
+}
+.user-name {
+  padding: 18px 13px;
+}
+.user-name,
+h3 {
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+}
+.sidebar-menu {
+  margin: 20px 0;
+}
+.sidebar-menu ul li {
+  padding: 5px 0;
+}
+
+.sidebar-menu ul li a {
+  color: var(--text-color);
+  font-weight: 400;
+}
+.dashboard-main {
+  background-color: rgb(238, 237, 237);
+  padding: 30px 25px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.1);
+}
+.dashboard-main h2 {
+  padding: 25px 0;
+}
+.user-Details {
+  padding: 20px 0;
+}
+.user-Details input,
+.user-Details select {
+  width: 400px;
+  max-width: 400px;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.user-Details input:focus {
+  outline: none;
+}

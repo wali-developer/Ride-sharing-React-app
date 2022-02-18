@@ -3,14 +3,15 @@
   margin: 0 30px;
 }
 .navbar-nav-scroll {
-  --bs-scroll-height: '100px';
+  --bs-scroll-height: "100px";
 }
 .navbarbg {
   background-color: #f1f1f1;
   padding: 10px 25px;
 }
 
-.myNavBar .navbar-brand {
+.myNavBar .navbar-brand,
+.Logo .navbar-brand {
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--headingColor);
@@ -89,7 +90,7 @@
   margin-top: 40px;
   position: relative;
 }
-.mainInnerRow input[type='date'] {
+.mainInnerRow input[type="date"] {
   padding: 10px;
   border: 1px solid lightgray;
 }

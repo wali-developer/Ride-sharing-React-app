@@ -12,11 +12,11 @@ import FooterLinks from './FooterLinks';
 const FooterCol = [
   {
     link1: 'How it works',
-    link1url: '/',
+    link1url: '/howitworks',
     link2: 'About Us',
     link2url: '/about',
     link3: 'Contact Us',
-    link3url: '/',
+    link3url: '/contact',
     link4: 'Help',
     link4url: '/',
   },
