@@ -99,7 +99,6 @@
   background-color: rgb(247, 247, 247);
   border-radius: 5px;
   border: 1px solid lightgray;
-  /* position: relative; */
 }
 .dropdownContent {
   position: absolute;
@@ -111,7 +110,6 @@
   padding: 20px 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.26);
   border-radius: 9px;
-  /* display: none !important; */
 }
 .showDropdown {
   display: block !important;

@@ -1,7 +1,8 @@
 .user-dashboard {
   width: 100%;
-  background-color: rgb(217, 219, 255);
-  height: 100vh;
+  background-color: rgb(191, 194, 255);
+  height: auto;
+  padding-bottom: 40px;
 }
 .logo {
   padding: 20px 30px;
@@ -56,13 +57,13 @@ h3 {
   color: var(--text-color);
   font-weight: 400;
 }
-.dashboard-main {
+.userProfile-main {
   background-color: rgb(238, 237, 237);
   padding: 30px 25px;
   border-radius: 5px;
   box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.1);
 }
-.dashboard-main h2 {
+.userProfile-main h2 {
   padding: 25px 0;
 }
 .user-Details {

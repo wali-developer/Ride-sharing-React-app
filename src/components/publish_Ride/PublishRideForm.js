@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
-import Navbar from "../Header/Navbar";
-import Footer from "../footer/Footer";
 import "../../style/publishRideForm.css";
 import axios from "axios";
+import PublishRideFormCard from "./PulishRideFormCard";
 
 const PublishRideForm = () => {
   const [passenger, setpassenger] = useState(0);
@@ -42,48 +40,19 @@ const PublishRideForm = () => {
   };
   return (
     <>
-      <Navbar />
       <section className="publish-ride-container">
         <div className="container d-flex justify-content-end">
           <div className="publish-ride-form">
-            <h1 className="text-center my-5">Publish Your Ride</h1>
-            <form onSubmit={(e) => publishRideHandle(e)}>
-              <div className="mb-4 input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Going from..."
-                  name="goingfrom"
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
-              <div className="mb-4 input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Going to..."
-                  name="goingto"
-                  onChange={(e) => handleChange(e)}
-                />
-              </div>
-              <div className="passenger-needed my-4">
-                <span className="me-3">Passenger Needed:</span>
-                <AiOutlinePlusCircle className="icon me-3" onClick={plus} />
-                <span className="me-3">{passenger}</span>
-                <AiOutlineMinusCircle className="me-3 icon" onClick={minus} />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-primary"
-                className="primaryBtn"
-              >
-                Publish Ride
-              </button>
-            </form>
+            <PublishRideFormCard
+              handleChange={handleChange}
+              publishRideHandle={publishRideHandle}
+              plus={plus}
+              minus={minus}
+              passenger={passenger}
+            />
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 };
