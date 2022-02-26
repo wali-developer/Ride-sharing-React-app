@@ -4,7 +4,7 @@ const UserLogout = () => {
   return (
     <div className="col-md-9 userProfile-main">
       <div className="container">
-        <h2>User Logout...</h2>
+        <h2>Logout...</h2>
       </div>
     </div>
   );

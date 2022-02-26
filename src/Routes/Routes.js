@@ -15,6 +15,8 @@ import UserPublishRidePage from "../Pages/userInterface-pages/UserPublishRidePag
 import UserRideRequestPage from "../Pages/userInterface-pages/UserRideRequestPage.js";
 import UserProfilePage from "../Pages/userInterface-pages/UserProfilePage.js";
 import PublishRidePage from "../Pages/PublishRidePage.js";
+import UserProfileEditPage from "../Pages/userInterface-pages/UserProfileEditPage.js";
+import Test from "../components/Test.js";
 
 function Routes() {
   return (
@@ -35,7 +37,11 @@ function Routes() {
           {/* User Interface */}
           <Route path="/user-dashboard" exact component={UserDashboardPage} />
           <Route path="/user-dashboard/logout" component={UserLogoutPage} />
-          <Route path="/user-dashboard/profile" component={UserProfilePage} />
+          <Route
+            path="/user-dashboard/profile"
+            exact
+            component={UserProfilePage}
+          />
           <Route
             path="/user-dashboard/publishride"
             component={UserPublishRidePage}
@@ -44,6 +50,12 @@ function Routes() {
             path="/user-dashboard/riderequest"
             component={UserRideRequestPage}
           />
+          <Route
+            path="/user-dashboard/profile/edit/:id"
+            component={UserProfileEditPage}
+          />
+
+          <Route path="/test" component={Test} />
 
           {/* Error page */}
           <Route component={Error404} />

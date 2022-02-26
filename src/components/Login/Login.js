@@ -4,12 +4,16 @@ import Footer from "../footer/Footer";
 import Navbar from "../Header/Navbar";
 import "../../style/form.css";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  // state to store email and password details
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const history = useHistory();
 
   // handle user login
   const handleLogin = async (e) => {
@@ -19,7 +23,13 @@ const Login = () => {
         "http://localhost:3001/user/login",
         formData
       );
-      alert(data);
+      if (!data.token && !data.user) {
+        alert(data);
+      } else {
+        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        history.push("/user-dashboard");
+      }
     } catch (err) {
       console.log(err);
     }

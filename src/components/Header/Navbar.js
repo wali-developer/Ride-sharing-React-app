@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import './header.css';
-import { FaUserAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import "./header.css";
+import { FaUserAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [show, setShow] = React.useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', fixedNavbar);
+    window.addEventListener("scroll", fixedNavbar);
   }, []);
 
   // to fix the navbar when scrolling down
   const fixedNavbar = () => {
-    if (window.scrollY >= '45') {
+    if (window.scrollY >= "45") {
       setShow(true);
     } else {
       setShow(false);
@@ -23,13 +23,13 @@ const Navbar = () => {
       <nav
         className={
           show
-            ? 'navbar fixed-top navbarbg navbar-expand-lg navbar-light'
-            : 'navbar navbar-expand-lg navbar-light'
+            ? "navbar fixed-top navbarbg navbar-expand-lg navbar-light"
+            : "navbar navbar-expand-lg navbar-light"
         }
         id="fixedNavbar"
       >
         <div className="container-fluid">
-          <Link to={'/'} className="navbar-brand">
+          <Link to={"/"} className="navbar-brand">
             TrustiCar
           </Link>
           <button
@@ -61,25 +61,36 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-            <div className="navbarButtons d-flex flex-wrap">
-              <Link to="/login">
-                <button
-                  className="btn btn-outline-success login me-2"
-                  type="submit"
-                >
-                  <FaUserAlt className="user" />
-                  Login
-                </button>
-              </Link>
-              <Link to="/register">
-                <button
-                  className="btn btn-outline-success register"
-                  type="submit"
-                >
-                  Register
-                </button>
-              </Link>
-            </div>
+            {localStorage.getItem("user") ? (
+              <div className="navbarButtons d-flex flex-wrap">
+                <Link to="/login">
+                  <button
+                    className="btn btn-outline-success login me-2"
+                    type="submit"
+                  >
+                    <FaUserAlt className="user" />
+                    Login
+                  </button>
+                </Link>
+                <Link to="/register">
+                  <button
+                    className="btn btn-outline-success register"
+                    type="submit"
+                  >
+                    Register
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="navbarButtons d-flex flex-wrap">
+                <Link to="/">
+                  <button className="btn btn-outline-success login me-2">
+                    <FaUserAlt className="user" />
+                    Account
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </nav>

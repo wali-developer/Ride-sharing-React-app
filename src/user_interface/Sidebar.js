@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
 const Sidebar = () => {
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    const LoginUser = JSON.parse(localStorage.getItem("user"));
+    setUserName(LoginUser.fullName);
+  });
+  const Logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+    alert("You are successfully logout...");
+  };
   return (
     <div className="col-md-3 sidebar">
       <div className="sidebar-content">
@@ -11,7 +21,7 @@ const Sidebar = () => {
             <FaUserCircle className="user-photo" />
           </div>
           <div className="user-name">
-            <h3>User Name</h3>
+            <h3>{userName}</h3>
           </div>
         </div>
         <div className="sidebar-menu">
@@ -43,7 +53,11 @@ const Sidebar = () => {
             </li>
 
             <li className="nav-item">
-              <Link to="/user-dashboard/logout" className="nav-link">
+              <Link
+                to="/user-dashboard/logout"
+                className="nav-link"
+                onClick={Logout}
+              >
                 Logout
               </Link>
             </li>
