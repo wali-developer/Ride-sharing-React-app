@@ -77,11 +77,17 @@
   font-weight: 600;
   padding: 20px 0;
 }
-.mainRowCol1 input {
+.mainRowCol1 input,
+.mainRowCol1 select {
   border-radius: 5px;
   height: 35px;
   background-color: rgb(247, 247, 247);
 }
+.mainRowCol1 select:focus {
+  border-color: var(--primary-color);
+  box-shadow: none;
+}
+
 .mainInnerRow {
   display: flex;
   flex-wrap: wrap;

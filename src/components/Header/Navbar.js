@@ -18,6 +18,7 @@ const Navbar = () => {
       setShow(false);
     }
   };
+  const user = localStorage.getItem("user");
   return (
     <section className="myNavBar">
       <nav
@@ -61,7 +62,7 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-            {localStorage.getItem("user") ? (
+            {!user ? (
               <div className="navbarButtons d-flex flex-wrap">
                 <Link to="/login">
                   <button
@@ -82,13 +83,67 @@ const Navbar = () => {
                 </Link>
               </div>
             ) : (
-              <div className="navbarButtons d-flex flex-wrap">
-                <Link to="/">
-                  <button className="btn btn-outline-success login me-2">
-                    <FaUserAlt className="user" />
-                    Account
+              <div class="btn-group navbarButtons me-2">
+                <Link to="/user-dashboard">
+                  <button
+                    type="button"
+                    className="btn btn-outline-success login"
+                  >
+                    My Account
                   </button>
                 </Link>
+                <span
+                  type="button"
+                  className="btn btn-outline-success login dropdown-toggle dropdown-toggle-split"
+                  id="dropdownMenuReference"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  data-bs-reference="parent"
+                >
+                  <span className="visually-hidden">Toggle Dropdown</span>
+                </span>
+                <ul
+                  className="dropdown-menu py-3"
+                  aria-labelledby="dropdownMenuReference"
+                >
+                  <li className="my-2">
+                    <Link to="/user-dashboard" className="dropdown-item">
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li className="my-2">
+                    <Link
+                      to="/user-dashboard/profile"
+                      className="dropdown-item"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                  <li className="my-2">
+                    <Link
+                      to="/user-dashboard/publishride"
+                      className="dropdown-item"
+                    >
+                      Publish Ride
+                    </Link>
+                  </li>
+                  {/* <li>
+                    <hr className="dropdown-divider" />
+                  </li> */}
+                  <li className="my-2">
+                    <Link
+                      to="/user-dashboard/riderequest"
+                      className="dropdown-item"
+                    >
+                      Request for a Ride
+                    </Link>
+                  </li>
+                  <li className="my-2">
+                    <Link to="/user-dashboard/logout" className="dropdown-item">
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
               </div>
             )}
           </div>

@@ -3,6 +3,7 @@ import PassengerDetails from "./PassengerDetails";
 import { FaUser } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import places from "../../placesApi/places.js";
 
 const HeaderRideSearch = () => {
   const [passengerNeeded, setPassengerNeeded] = useState(0);
@@ -31,28 +32,37 @@ const HeaderRideSearch = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.get("http://localhost:3001/publishride");
-      // setPublishRides(data);
-      history.push({
-        pathname: "/availablerides",
-        state: {
-          goingFrom: formData.goingFrom,
-          goingTo: formData.goingTo,
-          date: formData.date,
-          passengerNeeded: passengerNeeded,
-          data,
-        },
-      });
+      if (
+        formData.goingFrom.length > 0 &&
+        formData.goingTo.length > 0 &&
+        formData.date.length > 0
+      ) {
+        const { data } = await axios.get("http://localhost:3001/publishride");
+        // setPublishRides(data);
+        history.push({
+          pathname: "/availablerides",
+          state: {
+            goingFrom: formData.goingFrom,
+            goingTo: formData.goingTo,
+            date: formData.date,
+            passengerNeeded: passengerNeeded,
+            data,
+          },
+        });
+      } else {
+        alert("Please fill all the fields");
+      }
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <>
       <h2>Search for a Ride</h2>
       <form onSubmit={(e) => handleSearch(e)}>
         <div className="mb-3">
-          <input
+          <select
             type="text"
             className="form-control"
             name="goingFrom"
@@ -61,10 +71,15 @@ const HeaderRideSearch = () => {
               setFormData({ ...formData, goingFrom: e.target.value });
             }}
             value={formData.goingFrom}
-          />
+          >
+            {places.map((place) => {
+              const { id, location } = place;
+              return <option key={id}>{location}</option>;
+            })}
+          </select>
         </div>
         <div className="mb-3">
-          <input
+          <select
             type="text"
             className="form-control"
             name="goingTo"
@@ -73,7 +88,13 @@ const HeaderRideSearch = () => {
               setFormData({ ...formData, goingTo: e.target.value })
             }
             value={formData.goingTo}
-          />
+            required
+          >
+            {places.map((place) => {
+              const { id, location } = place;
+              return <option key={id}>{location}</option>;
+            })}
+          </select>
         </div>
         <div className=" mainInnerRow">
           <div className="date">
