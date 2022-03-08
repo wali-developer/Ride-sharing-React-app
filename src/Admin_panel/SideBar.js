@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
-import axios from "axios";
 
-const Sidebar = () => {
-  const [userName, setUserName] = useState("");
-  useEffect(() => {
-    const LoginUser = JSON.parse(localStorage.getItem("user"));
-    setUserName(LoginUser.fullName);
-  });
-  const Logout = () => {
-    localStorage.clear();
-    window.location.href = "/";
-    alert("You are successfully logout...");
-  };
+const SideBar = () => {
+  //   const [userName, setUserName] = useState("");
+  //   useEffect(() => {
+  //     const LoginUser = JSON.parse(localStorage.getItem("user"));
+  //     setUserName(LoginUser.fullName);
+  //   });
+  //   const Logout = () => {
+  //     localStorage.clear();
+  //     window.location.href = "/";
+  //     alert("You are successfully logout...");
+  //   };
   return (
     <div className="col-md-3 sidebar">
       <div className="sidebar-content">
@@ -22,37 +21,46 @@ const Sidebar = () => {
             <FaUserCircle className="user-photo" />
           </div>
           <div className="user-name">
-            <h3>{userName}</h3>
+            <h3>Admin Name</h3>
           </div>
         </div>
         <div className="sidebar-menu">
           <ul className="nav nav-tabs flex-column">
             <li className="nav-item">
-              <Link to="/user-dashboard" className="nav-link">
+              <Link to="/admin-dashboard" className="nav-link">
                 Dashboard
               </Link>
             </li>
             <li className="nav-item active">
-              <Link to="/user-dashboard/profile" className="nav-link">
+              <Link to="/admin-dashboard/profile" className="nav-link">
                 Profile
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/user-dashboard/publishride" className="nav-link">
-                Publish Ride
+              <Link to="/admin-dashboard/riders" className="nav-link">
+                Riders
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/user-dashboard/riderequest" className="nav-link">
-                Request for Ride
+              <Link to="/admin-dashboard/rides" className="nav-link">
+                Rides
               </Link>
             </li>
 
             <li className="nav-item">
               <Link
-                to="/user-dashboard/logout"
+                to="/admin-dashboard/drivers"
                 className="nav-link"
-                onClick={Logout}
+                // onClick={Logout}
+              >
+                Drivers
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/admin-dashboard/logout"
+                className="nav-link"
+                // onClick={Logout}
               >
                 Logout
               </Link>
@@ -64,4 +72,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default SideBar;

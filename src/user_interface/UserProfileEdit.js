@@ -12,6 +12,7 @@ const UserProfileEdit = () => {
     password: history.location.state.user.password,
     userType: history.location.state.user.userType,
   });
+  const [file, setFile] = useState();
 
   // user inputs typing handler
   const handleChange = (e) => {
@@ -118,6 +119,22 @@ const UserProfileEdit = () => {
               <option value="Passenger">Passenger</option>
               <option value="Driver">Driver</option>
             </select>
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label" htmlFor="file">
+              Select Your Image
+            </label>
+            <input
+              type="file"
+              // name="image"
+              className="form-control"
+              onChange={(e) => {
+                const [file] = e.target.files[0];
+                setFile(e.target.files[0]);
+              }}
+              accept=".jpg"
+            />
           </div>
           <button>Update Profile</button>
         </form>

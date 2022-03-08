@@ -17,6 +17,12 @@ import UserProfilePage from "../Pages/userInterface-pages/UserProfilePage.js";
 import PublishRidePage from "../Pages/PublishRidePage.js";
 import UserProfileEditPage from "../Pages/userInterface-pages/UserProfileEditPage.js";
 import Test from "../components/Test.js";
+import AdminPanel from ".././Pages/Admin_panel_pages/AdminDashboardPage";
+import AdminProfilePage from ".././Pages/Admin_panel_pages/AdminProfilePage";
+import AdminRidersPage from ".././Pages/Admin_panel_pages/AdminRidersPage";
+import AdminRidesPage from ".././Pages/Admin_panel_pages/AdminRidesPage";
+import AdminDriversPage from ".././Pages/Admin_panel_pages/AdminDriversPage";
+import AdminLogout from "../Admin_panel/AdminLogout";
 
 function Routes() {
   return (
@@ -56,6 +62,15 @@ function Routes() {
           />
 
           <Route path="/test" component={Test} />
+
+          {/* User Interface */}
+          <Route path="/admin-dashboard" exact component={AdminPanel} />
+          <Route path="/admin-dashboard/profile" component={AdminProfilePage} />
+          {/* <Route path="/admin-dashboard/profile/edit/:id" component={AdminProfilePage}/> */}
+          <Route path="/admin-dashboard/riders" component={AdminRidersPage} />
+          <Route path="/admin-dashboard/rides" component={AdminRidesPage} />
+          <Route path="/admin-dashbaord/drivers" component={AdminDriversPage} />
+          <Route path="/admin-dashboard/logout" component={AdminLogout} />
 
           {/* Error page */}
           <Route component={Error404} />

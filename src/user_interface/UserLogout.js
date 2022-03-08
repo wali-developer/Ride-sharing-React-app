@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const UserLogout = () => {
-  return (
-    <div className="col-md-9 userProfile-main">
-      <div className="container">
-        <h2>Logout...</h2>
-      </div>
-    </div>
-  );
+  useEffect(() => {
+    localStorage.clear();
+    window.location.href = "/";
+    alert("You are successfully logout...");
+  });
 };
 
 export default UserLogout;

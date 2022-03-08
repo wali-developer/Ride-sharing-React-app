@@ -11,7 +11,7 @@ const UserLogoutPage = () => {
       <div className="container">
         <div className="row userDashboard-row">
           <Sidebar />
-          <UserLogout />;
+          <UserLogout />
         </div>
       </div>
     </section>

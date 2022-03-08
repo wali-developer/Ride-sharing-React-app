@@ -80,4 +80,6 @@ h3 {
 }
 .user-Details input:focus {
   outline: none;
+  border: 1px solid var(--primary-color);
+  box-shadow: none;
 }
