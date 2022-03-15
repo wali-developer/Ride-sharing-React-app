@@ -97,8 +97,7 @@ const Register = () => {
               </Link>
               <button
                 type="submit"
-                className="btn btn-primary"
-                className="primaryBtn"
+                className="btn btn-primary primaryBtn"
               >
                 Register
               </button>

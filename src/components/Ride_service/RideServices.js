@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./rideServices.css";
-import { FaAddressCard } from "react-icons/fa";
+// import { FaAddressCard } from "react-icons/fa";
 import servicesApi from "./serviceApi";
 
 const RideServices = () => {
@@ -10,11 +11,13 @@ const RideServices = () => {
       <div className="ride-services container">
         <div className="row RideServicesRow">
           {services.map((service, index) => {
-            const { icon, heading, text } = service;
+            const { icon, heading, text, linkTo } = service;
             return (
               <div className="col-12 col-md-4 RideServicesRowCol" key={index}>
-                <FaAddressCard className="serviceIcon" />
-                <h5>{heading}</h5>
+                <i className={`serviceIcon ${icon}`} />
+                <Link to={linkTo}>
+                  <h5>{heading}</h5>
+                </Link>
                 <p>{text}</p>
               </div>
             );

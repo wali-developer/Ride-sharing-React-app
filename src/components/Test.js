@@ -75,35 +75,93 @@
 //   }
 // }
 
-import axios from "axios";
+// import axios from "axios";
+// import React, { useState } from "react";
+
+// const Test = () => {
+//   const [file, setFile] = useState();
+//   const send = (e) => {
+//     e.preventDefault();
+
+//     const data = new FormData();
+//     data.append("file", file);
+//     // console.log(data);
+//     axios
+//       .post("http://localhost:3001/user/upload", data)
+//       .then((res) => console.log(res).catch((err) => console.log(err)));
+//   };
+//   return (
+//     <div>
+//       <form>
+//         <div>
+//           <label>File</label>
+//           <input
+//             type="file"
+//             name="image"
+//             onChange={(event) => {
+//               setFile(event.target.files[0]);
+//             }}
+//           />
+//         </div>
+//         <button onClick={(e) => send(e)}>send</button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default Test;
+
 import React, { useState } from "react";
+import axios from "axios";
 
 const Test = () => {
-  const [file, setFile] = useState();
-  const send = (e) => {
-    e.preventDefault();
+  const [text, setText] = useState("");
+  const [sender, setSender] = useState("");
+  const [receiver, setReceiver] = useState("");
 
-    const data = new FormData();
-    data.append("file", file);
-    // console.log(data);
-    axios
-      .post("http://localhost:3001/user/upload", data)
-      .then((res) => console.log(res).catch((err) => console.log(err)));
+  const handleSend = async (e) => {
+    e.preventDefault(e);
+
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3001/user/send-mail",
+        { text, sender, receiver } //subject is missing
+      );
+      alert(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div>
-      <form>
-        <div>
-          <label>File</label>
-          <input
-            type="file"
-            name="image"
-            onChange={(event) => {
-              setFile(event.target.files[0]);
-            }}
-          />
-        </div>
-        <button onClick={(e) => send(e)}>send</button>
+      <h1>Test Email</h1>
+
+      <form onSubmit={(e) => handleSend(e)}>
+        <input
+          type="text"
+          placeholder="Email text..."
+          name="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <br />
+        <input
+          type="email"
+          name="sender"
+          placeholder="Sender email address..."
+          value={sender}
+          onChange={(e) => setSender(e.target.value)}
+        />
+        <br />
+        <input
+          type="email"
+          name="receiver"
+          placeholder="Receiver email address..."
+          value={receiver}
+          onChange={(e) => setReceiver(e.target.value)}
+        />{" "}
+        <br />
+        <button type="submit">Send Email</button>
       </form>
     </div>
   );

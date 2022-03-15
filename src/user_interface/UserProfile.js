@@ -87,7 +87,9 @@ const UserProfile = () => {
               <option value="Driver">Driver</option>
             </select>
           </div>
-          <button onClick={(e) => handleEdit(e)}>Edit Profile</button>
+          <button className="btn btn-primary" onClick={(e) => handleEdit(e)}>
+            Edit Profile
+          </button>
         </form>
       </div>
     </div>

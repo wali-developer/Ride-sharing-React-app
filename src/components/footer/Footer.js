@@ -1,42 +1,42 @@
-import React from 'react';
-import './Footer.css';
+import React from "react";
+import "./Footer.css";
 import {
   FaFacebook,
   FaInvision,
   FaPinterest,
   FaTwitterSquare,
   FaYoutube,
-} from 'react-icons/fa';
-import FooterLinks from './FooterLinks';
+} from "react-icons/fa";
+import FooterLinks from "./FooterLinks";
 
 const FooterCol = [
   {
-    link1: 'How it works',
-    link1url: '/howitworks',
-    link2: 'About Us',
-    link2url: '/about',
-    link3: 'Contact Us',
-    link3url: '/contact',
-    link4: 'Help',
-    link4url: '/',
+    link1: "How it works",
+    link1url: "/howitworks",
+    link2: "About Us",
+    link2url: "/about",
+    link3: "Contact Us",
+    link3url: "/contact",
+    link4: "Help",
+    link4url: "/",
   },
   {
-    link1: 'Blogs',
-    link1url: '/',
-    link2: 'Privacy and Policy',
-    link2url: '/',
-    link3: 'Publish Ride',
-    link3url: '/publishride',
-    link4: 'Book a Ride',
-    link4url: '/search',
+    link1: "Blogs",
+    link1url: "/",
+    link2: "Privacy and Policy",
+    link2url: "/",
+    link3: "Publish Ride",
+    link3url: "/publishride",
+    link4: "Book a Ride",
+    link4url: "/search",
   },
 ];
 
 const Footer = () => {
   return (
     <section className="Footer">
-      <div className="container">
-        <div className="row FooterRow">
+      <div className="">
+        <div className="row FooterRow d-flex justify-content-around">
           <FooterLinks FooterCol={FooterCol} />
           <div className="col-12 col-md-6 col-lg-4 FooterSocialCol">
             <h5>Connect with us</h5>

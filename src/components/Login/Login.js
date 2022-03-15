@@ -5,6 +5,7 @@ import Navbar from "../Header/Navbar";
 import "../../style/form.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   // state to store email and password details
@@ -28,7 +29,11 @@ const Login = () => {
       } else {
         localStorage.setItem("authToken", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
-        history.push("/user-dashboard");
+        if (data.user.email === "waliullah@trusticar.com") {
+          history.push("/admin-dashboard");
+        } else {
+          history.push("/user-dashboard");
+        }
       }
     } catch (err) {
       console.log(err);
@@ -72,16 +77,16 @@ const Login = () => {
                 <input type="checkbox" className="form-check-input" />
                 <label className="form-check-label">Remember me</label>
               </div>
-              <a href="#">
+              <Link to="/">
                 <p className="forgot">Forgot Password</p>
-              </a>
-              <button
-                type="submit"
-                className="btn btn-primary"
-                className="primaryBtn"
-              >
+              </Link>
+
+              <button type="submit" className="btn btn-primary primaryBtn">
                 Login
               </button>
+              <Link to="/register">
+                <p className="alreadyAccount">Not have Account yet ?</p>
+              </Link>
             </form>
           </div>
         </div>

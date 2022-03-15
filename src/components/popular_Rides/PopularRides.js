@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SinglePopularRide from "./SinglePopularRide";
 import "./popularRides.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const PopularRides = () => {
   const [show, setShow] = useState(false);
+  const [popularRides, setPopularRides] = useState([]);
+
+  useEffect(() => {
+    const fetchPopularRides = async () => {
+      try {
+        const { data } = await axios.get("http://localhost:3001/publishride");
+        setPopularRides(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchPopularRides();
+  });
   return (
     <>
       <section className="popularRides">
@@ -24,16 +38,6 @@ const PopularRides = () => {
                 <SinglePopularRide GoingFrom="Battagram" GoingTo="Thakot" />
                 <SinglePopularRide GoingFrom="Thakot" GoingTo="Chattar plan" />
               </div>
-              <div className="see-more">
-                <Link to="">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => setShow(!show)}
-                  >
-                    See Less
-                  </button>
-                </Link>
-              </div>
             </div>
           ) : null}
 
@@ -43,7 +47,7 @@ const PopularRides = () => {
                 className="btn btn-primary"
                 onClick={() => setShow(!show)}
               >
-                See More
+                {show ? "See Less" : "See More"}
               </button>
             </Link>
           </div>

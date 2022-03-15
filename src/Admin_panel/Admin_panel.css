@@ -1,0 +1,21 @@
+.IconCol {
+  background-color: #2f978a;
+  text-align: center;
+}
+.statisticCol {
+  background-color: #5ca199;
+  color: white;
+}
+.statisticCol h6 {
+  color: white;
+  font-weight: 400;
+}
+
+.IconCol i {
+  margin-top: 18px;
+  color: white;
+  font-size: 24px;
+}
+.adminDashboardCard {
+  margin: 0 auto;
+}

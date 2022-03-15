@@ -21,8 +21,9 @@ import AdminPanel from ".././Pages/Admin_panel_pages/AdminDashboardPage";
 import AdminProfilePage from ".././Pages/Admin_panel_pages/AdminProfilePage";
 import AdminRidersPage from ".././Pages/Admin_panel_pages/AdminRidersPage";
 import AdminRidesPage from ".././Pages/Admin_panel_pages/AdminRidesPage";
-import AdminDriversPage from ".././Pages/Admin_panel_pages/AdminDriversPage";
 import AdminLogout from "../Admin_panel/AdminLogout";
+import AdminDriversPage from "../Pages/Admin_panel_pages/AdminDriversPage.js";
+import BookingRide from "../components/Search/BookingRide.js";
 
 function Routes() {
   return (
@@ -35,7 +36,8 @@ function Routes() {
           <Route path="/register" component={Register} />
           <Route path="/publishride" component={PublishRidePage} />
           <Route path="/search" component={SearchRide} />
-          <Route path="/availablerides" component={SearchPage} />
+          <Route path="/availablerides" exact component={SearchPage} />
+          <Route path="/availablerides/book" component={BookingRide} />
           <Route path="/about" component={AboutUs} />
           <Route path="/contact" component={ContactUs} />
           <Route path="/howitworks" components={Works} />
@@ -69,7 +71,7 @@ function Routes() {
           {/* <Route path="/admin-dashboard/profile/edit/:id" component={AdminProfilePage}/> */}
           <Route path="/admin-dashboard/riders" component={AdminRidersPage} />
           <Route path="/admin-dashboard/rides" component={AdminRidesPage} />
-          <Route path="/admin-dashbaord/drivers" component={AdminDriversPage} />
+          <Route path="/admin-dashboard/drivers" component={AdminDriversPage} />
           <Route path="/admin-dashboard/logout" component={AdminLogout} />
 
           {/* Error page */}

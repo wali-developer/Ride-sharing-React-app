@@ -136,7 +136,7 @@ const UserProfileEdit = () => {
               accept=".jpg"
             />
           </div>
-          <button>Update Profile</button>
+          <button className="btn btn-primary">Update Profile</button>
         </form>
       </div>
     </div>

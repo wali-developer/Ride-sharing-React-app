@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./header.css";
 import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import UserMenu from "./UserMenu";
 
 const Navbar = () => {
   const [show, setShow] = React.useState(false);
@@ -19,6 +20,14 @@ const Navbar = () => {
     }
   };
   const user = localStorage.getItem("user");
+  // const checkUser = () => {
+  //   if (user.email === "waliullah@trusticar.com"){
+  //     return <Link to="/admin-dashboard">Admin Dashboard</Link>
+  //   }else{
+  //     return <Link to="/user-dashboard">User Dashboard</Link>
+  //   }
+  // }
+
   return (
     <section className="myNavBar">
       <nav
@@ -84,66 +93,7 @@ const Navbar = () => {
               </div>
             ) : (
               <div class="btn-group navbarButtons me-2">
-                <Link to="/user-dashboard">
-                  <button
-                    type="button"
-                    className="btn btn-outline-success login"
-                  >
-                    My Account
-                  </button>
-                </Link>
-                <span
-                  type="button"
-                  className="btn btn-outline-success login dropdown-toggle dropdown-toggle-split"
-                  id="dropdownMenuReference"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  data-bs-reference="parent"
-                >
-                  <span className="visually-hidden">Toggle Dropdown</span>
-                </span>
-                <ul
-                  className="dropdown-menu py-3"
-                  aria-labelledby="dropdownMenuReference"
-                >
-                  <li className="my-2">
-                    <Link to="/user-dashboard" className="dropdown-item">
-                      Dashboard
-                    </Link>
-                  </li>
-                  <li className="my-2">
-                    <Link
-                      to="/user-dashboard/profile"
-                      className="dropdown-item"
-                    >
-                      Profile
-                    </Link>
-                  </li>
-                  <li className="my-2">
-                    <Link
-                      to="/user-dashboard/publishride"
-                      className="dropdown-item"
-                    >
-                      Publish Ride
-                    </Link>
-                  </li>
-                  {/* <li>
-                    <hr className="dropdown-divider" />
-                  </li> */}
-                  <li className="my-2">
-                    <Link
-                      to="/user-dashboard/riderequest"
-                      className="dropdown-item"
-                    >
-                      Request for a Ride
-                    </Link>
-                  </li>
-                  <li className="my-2">
-                    <Link to="/user-dashboard/logout" className="dropdown-item">
-                      Logout
-                    </Link>
-                  </li>
-                </ul>
+                <UserMenu user={user} />
               </div>
             )}
           </div>

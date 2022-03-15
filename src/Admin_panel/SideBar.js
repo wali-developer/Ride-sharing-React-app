@@ -3,16 +3,19 @@ import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
 const SideBar = () => {
-  //   const [userName, setUserName] = useState("");
-  //   useEffect(() => {
-  //     const LoginUser = JSON.parse(localStorage.getItem("user"));
-  //     setUserName(LoginUser.fullName);
-  //   });
-  //   const Logout = () => {
-  //     localStorage.clear();
-  //     window.location.href = "/";
-  //     alert("You are successfully logout...");
-  //   };
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    const LoginUser = () => {
+      const userName = JSON.parse(localStorage.getItem("user"));
+      setUserName(userName.fullName);
+    };
+    LoginUser();
+  });
+  const Logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+    alert("You are successfully logout...");
+  };
   return (
     <div className="col-md-3 sidebar">
       <div className="sidebar-content">
@@ -21,7 +24,7 @@ const SideBar = () => {
             <FaUserCircle className="user-photo" />
           </div>
           <div className="user-name">
-            <h3>Admin Name</h3>
+            <h3>{userName}</h3>
           </div>
         </div>
         <div className="sidebar-menu">
@@ -48,22 +51,14 @@ const SideBar = () => {
             </li>
 
             <li className="nav-item">
-              <Link
-                to="/admin-dashboard/drivers"
-                className="nav-link"
-                // onClick={Logout}
-              >
+              <Link to="/admin-dashboard/drivers" className="nav-link">
                 Drivers
               </Link>
             </li>
             <li className="nav-item">
-              <Link
-                to="/admin-dashboard/logout"
-                className="nav-link"
-                // onClick={Logout}
-              >
+              <button className="nav-link" onClick={Logout}>
                 Logout
-              </Link>
+              </button>
             </li>
           </ul>
         </div>

@@ -1,36 +1,38 @@
-import React from "react";
-// import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const AdminProfile = () => {
-  //   const [user, setUser] = useState({
-  //     id: "",
-  //     fullName: "",
-  //     userName: "",
-  //     email: "",
-  //     password: "",
-  //     userType: "",
-  //   });
-  //   const history = useHistory();
-  //   useEffect(() => {
-  //     const LoginUser = JSON.parse(localStorage.getItem("user"));
-  //     setUser({
-  //       id: LoginUser._id,
-  //       fullName: LoginUser.fullName,
-  //       userName: LoginUser.userName,
-  //       email: LoginUser.email,
-  //       password: LoginUser.password,
-  //       userType: LoginUser.userType,
-  //     });
-  //   }, []);
+  const [user, setUser] = useState({
+    id: "",
+    fullName: "",
+    userName: "",
+    email: "",
+    password: "",
+  });
+  useEffect(() => {
+    const LoginUser = JSON.parse(localStorage.getItem("user"));
+    setUser({
+      id: LoginUser._id,
+      fullName: LoginUser.fullName,
+      userName: LoginUser.userName,
+      email: LoginUser.email,
+      password: LoginUser.password,
+      userType: LoginUser.userType,
+    });
+  }, []);
 
-  //   const handleEdit = (e) => {
-  //     e.preventDefault();
-
-  //     history.push({
-  //       pathname: "/user-dashboard/profile/edit/" + user.id,
-  //       state: { user: user },
-  //     });
-  //   };
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.patch(
+        `http://localhost:3001/user/${user.id}`,
+        user
+      );
+      alert(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="col-md-9 userProfile-main">
       <div className="container">
@@ -41,8 +43,8 @@ const AdminProfile = () => {
             <input
               type="text"
               className="form-control"
-              //   value={user.fullName}
-              //   onChange={(e) => console.log("input changed...")}
+              value={user.fullName}
+              onChange={(e) => setUser({ ...user, fullName: e.target.value })}
             />
           </div>
           <div className="mb-3">
@@ -50,8 +52,8 @@ const AdminProfile = () => {
             <input
               type="text"
               className="form-control"
-              //   value={user.userName}
-              //   onChange={(e) => console.log("input changed...")}
+              value={user.userName}
+              onChange={(e) => setUser({ ...user, userName: e.target.value })}
             />
           </div>
           <div className="mb-3">
@@ -59,8 +61,8 @@ const AdminProfile = () => {
             <input
               type="email"
               className="form-control"
-              //   value={user.email}
-              //   onChange={(e) => console.log("input changed...")}
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
           </div>
           <div className="mb-3">
@@ -69,28 +71,12 @@ const AdminProfile = () => {
               type="password"
               className="form-control"
               disabled
-              //   value={user.password}
-              //   onChange={(e) => console.log("input changed...")}
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </div>
-          <div className="mb-3 mt-4">
-            <label>User type</label>
-            <select
-              className="mb-4 form-select"
-              aria-label="Default select example"
-              placeholder="User type"
-              //   name="userType"
-              //   value={user.userType}
-              //   onChange={(e) => console.log("input changed...")}
-            >
-              <option value="Passenger">Passenger</option>
-              <option value="Driver">Driver</option>
-            </select>
-          </div>
-          <button
-          //   onClick={(e) => handleEdit(e)}
-          >
-            Edit Profile
+          <button className="btn btn-primary" onClick={(e) => handleUpdate(e)}>
+            Update Changes
           </button>
         </form>
       </div>
