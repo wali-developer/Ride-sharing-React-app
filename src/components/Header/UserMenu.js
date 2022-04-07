@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 // import { FiUsers } from "react-icons/fi";
 
 const UserMenu = ({ user }) => {
-  const { userName, email } = JSON.parse(user);
+  const { userName, email } = user;
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
   if (email === "waliullah@trusticar.com" && userName === "admin") {
     return (
       <>
@@ -111,7 +116,7 @@ const UserMenu = ({ user }) => {
             </Link>
           </li>
           <li className="my-2">
-            <Link to="/user-dashboard/logout" className="dropdown-item">
+            <Link to="/" className="dropdown-item" onClick={handleLogout}>
               Logout
             </Link>
           </li>

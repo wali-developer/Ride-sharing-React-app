@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AdminProfile = () => {
   const [user, setUser] = useState({
@@ -28,7 +29,7 @@ const AdminProfile = () => {
         `http://localhost:3001/user/${user.id}`,
         user
       );
-      alert(data);
+      toast.success(data);
     } catch (err) {
       console.log(err);
     }

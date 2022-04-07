@@ -35,9 +35,11 @@ p {
 }
 input:focus,
 .btn:focus,
-select:focus {
+select:focus,
+.primaryBtn:focus {
   box-shadow: none;
   outline: none;
+  border: 1px solid var(--primary-color);
 }
 
 h1,

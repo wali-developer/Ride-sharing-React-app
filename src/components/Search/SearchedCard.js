@@ -1,23 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { GrLocation } from "react-icons/gr";
 import { FaUserCircle } from "react-icons/fa";
 import { BsArrowDown } from "react-icons/bs";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const SearchedCard = ({ index, goingfrom, goingto, name, date, email }) => {
+const SearchedCard = ({
+  index,
+  goingfrom,
+  goingto,
+  name,
+  date,
+  email,
+  status,
+  publishRideId,
+  formData,
+}) => {
   const history = useHistory();
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   const handleBook = () => {
-    history.push({
-      pathname: "/availablerides/book",
-      state: {
-        goingfrom,
-        goingto,
-        name,
-        date,
-        email,
-      },
-    });
+    if (!user) {
+      toast.info("Please Login to Book a Ride", { position: "top-center" });
+      history.push("/login");
+    } else {
+      history.push({
+        pathname: "/availablerides/book",
+        state: {
+          goingfrom,
+          goingto,
+          name,
+          date,
+          email,
+          status,
+          publishRideId,
+          formData,
+        },
+      });
+    }
   };
   return (
     <div className="searchCard" key={index}>
@@ -46,11 +66,14 @@ const SearchedCard = ({ index, goingfrom, goingto, name, date, email }) => {
           <span>{name}</span>
         </div>
         <div className="cardDate">
-          <span>{date.toString()}</span>
+          <span>{date}</span>
         </div>
       </div>
-      <div style={{ textAlign: "right" }} className="my-2">
-        <button className="btn btn-primary" onClick={handleBook}>
+      <div className="my-2 mt-3 d-flex justify-content-between">
+        <button className="btn primaryBtn" disabled>
+          {status}
+        </button>
+        <button className="btn primaryBtn" onClick={handleBook}>
           Book Now
         </button>
       </div>

@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import "../../style/publishRideForm.css";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const PulishRideFormCard = () => {
+  const [loginUser, setLoginUser] = useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
+
   const [passenger, setpassenger] = useState(0);
   const [goingfrom, setGoingfrom] = useState("");
   const [goingto, setGoingto] = useState("");
   const [date, setDate] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState(loginUser.fullName);
+  const [email, setEmail] = useState(loginUser.email);
+  const [status, setStatus] = useState("Inactive");
   const [phone, setPhone] = useState(undefined);
 
   const plus = () => {
@@ -38,13 +44,13 @@ const PulishRideFormCard = () => {
         name: name,
         email: email,
         phone: phone,
+        status: status,
         passenger: passenger,
         date: date,
       });
       if (data) {
-        alert("Your Ride published successfully...");
+        toast.success("Your Ride published successfully...");
       }
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -82,6 +88,7 @@ const PulishRideFormCard = () => {
             name="name"
             required
             onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         </div>
         <div className="mb-4 input-group">
@@ -92,6 +99,7 @@ const PulishRideFormCard = () => {
             name="email"
             required
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
         </div>
         <div className="mb-4 input-group">
@@ -103,6 +111,23 @@ const PulishRideFormCard = () => {
             required
             onChange={(e) => setPhone(e.target.value)}
           />
+        </div>
+        <label htmlFor="status" className="">
+          The Ride status will be Inactive untill it doesn't Approve from Admin
+        </label>
+        <div className="mb-4 input-group">
+          <select
+            type="text"
+            className="form-control"
+            placeholder="Select Ride status..."
+            name="select"
+            disabled
+            onChange={(e) => setStatus(e.target.value)}
+            value={status}
+          >
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
         </div>
         <div className="row">
           <div className="passenger-needed my-4 col-7">

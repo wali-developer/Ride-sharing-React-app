@@ -17,6 +17,7 @@ const Search = () => {
     passengerNeeded: history.location.state.passengerNeeded,
   });
   const [publishRides, setPublishRides] = useState([]);
+
   useEffect(() => {
     setPublishRides(history.location.state.data);
 
@@ -60,7 +61,9 @@ const Search = () => {
             <span> {numberOfAvailableRides} rides available</span>
           </div>
           {publishRides.map((publishRide, index) => {
-            const { goingfrom, goingto, date, name, email } = publishRide;
+            const { goingfrom, goingto, date, name, email, status, _id } =
+              publishRide;
+            console.log(publishRide);
             return (
               goingfrom === formData.goingFrom &&
               goingto === formData.goingTo && (
@@ -71,6 +74,9 @@ const Search = () => {
                   name={name}
                   email={email}
                   date={date}
+                  status={status}
+                  publishRideId={_id}
+                  formData={formData}
                 />
               )
             );

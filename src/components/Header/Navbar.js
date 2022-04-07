@@ -6,6 +6,9 @@ import UserMenu from "./UserMenu";
 
 const Navbar = () => {
   const [show, setShow] = React.useState(false);
+  const [user, setUser] = React.useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
 
   useEffect(() => {
     window.addEventListener("scroll", fixedNavbar);
@@ -19,14 +22,6 @@ const Navbar = () => {
       setShow(false);
     }
   };
-  const user = localStorage.getItem("user");
-  // const checkUser = () => {
-  //   if (user.email === "waliullah@trusticar.com"){
-  //     return <Link to="/admin-dashboard">Admin Dashboard</Link>
-  //   }else{
-  //     return <Link to="/user-dashboard">User Dashboard</Link>
-  //   }
-  // }
 
   return (
     <section className="myNavBar">

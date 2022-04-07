@@ -16,7 +16,6 @@ import UserRideRequestPage from "../Pages/userInterface-pages/UserRideRequestPag
 import UserProfilePage from "../Pages/userInterface-pages/UserProfilePage.js";
 import PublishRidePage from "../Pages/PublishRidePage.js";
 import UserProfileEditPage from "../Pages/userInterface-pages/UserProfileEditPage.js";
-import Test from "../components/Test.js";
 import AdminPanel from ".././Pages/Admin_panel_pages/AdminDashboardPage";
 import AdminProfilePage from ".././Pages/Admin_panel_pages/AdminProfilePage";
 import AdminRidersPage from ".././Pages/Admin_panel_pages/AdminRidersPage";
@@ -24,6 +23,9 @@ import AdminRidesPage from ".././Pages/Admin_panel_pages/AdminRidesPage";
 import AdminLogout from "../Admin_panel/AdminLogout";
 import AdminDriversPage from "../Pages/Admin_panel_pages/AdminDriversPage.js";
 import BookingRide from "../components/Search/BookingRide.js";
+import MyRideReqPage from "../Pages/userInterface-pages/MyRideReqPage.js";
+import FilleUploadTest from "../components/test/FilleUploadTest.js";
+import MessagingPage from "../Pages/userInterface-pages/MessagingPage.js";
 
 function Routes() {
   return (
@@ -62,13 +64,19 @@ function Routes() {
             path="/user-dashboard/profile/edit/:id"
             component={UserProfileEditPage}
           />
+          <Route
+            path="/user-dashboard/my-ride-requests"
+            component={MyRideReqPage}
+          />
 
-          <Route path="/test" component={Test} />
+          <Route path="/user-dashboard/messaging" component={MessagingPage} />
 
-          {/* User Interface */}
+          {/* <Route path="/test" component={Test} /> */}
+          <Route path="/upload" component={FilleUploadTest} />
+
+          {/* Admin Interface */}
           <Route path="/admin-dashboard" exact component={AdminPanel} />
           <Route path="/admin-dashboard/profile" component={AdminProfilePage} />
-          {/* <Route path="/admin-dashboard/profile/edit/:id" component={AdminProfilePage}/> */}
           <Route path="/admin-dashboard/riders" component={AdminRidersPage} />
           <Route path="/admin-dashboard/rides" component={AdminRidesPage} />
           <Route path="/admin-dashboard/drivers" component={AdminDriversPage} />

@@ -6,6 +6,7 @@ import "../../style/form.css";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   // state to store email and password details
@@ -25,7 +26,7 @@ const Login = () => {
         formData
       );
       if (!data.token && !data.user) {
-        alert(data);
+        toast.error(data, { position: "top-center" });
       } else {
         localStorage.setItem("authToken", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));

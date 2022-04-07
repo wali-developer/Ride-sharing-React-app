@@ -1,0 +1,152 @@
+.messaging {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 30px 6px rgba(0, 0, 0, 0.2);
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
+}
+.connectRiders-section {
+  border-right: 1px solid lightgray;
+  padding: 10px 30px;
+}
+
+.topBar {
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0;
+}
+.topBar .topBar-heading {
+  font-weight: 600;
+  padding: 8px 0;
+  font-size: 18px;
+  color: rgb(78, 78, 78);
+}
+.topBar .user-icon {
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+.SearchBox {
+  margin: 15px 0 10px 0;
+  background-color: #ebebeb;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+.SearchBox .search-icon {
+  margin-right: 10px;
+  font-size: 18px;
+}
+.SearchBox .search-riders-input {
+  border: none;
+  outline: none;
+  background-color: #ebebeb;
+}
+.SearchBox .search-riders-input:focus {
+  border: none;
+}
+.connectedRiders {
+  margin: 0 10px;
+}
+.connectedRiders .singleRider {
+  padding: 15px 0;
+  border-bottom: 1px solid lightgray;
+}
+.connectedRiders .singleRider:hover {
+  background-color: #ebebeb;
+}
+.connectedRiders h5,
+.connectedRiders span {
+  color: rgb(78, 78, 78);
+  font-weight: 500;
+  font-size: 15px;
+}
+.connectedRiders span {
+  font-size: 13px;
+}
+
+.messagesBody-section {
+  padding: 10px 30px;
+  position: relative;
+  height: 100vh;
+}
+.messagesContainer {
+  overflow-y: scroll;
+  height: 70vh;
+  min-height: 70vh;
+  padding-bottom: 40px;
+}
+.messagesList {
+  width: 100%;
+}
+.singleMessage {
+  padding: 20px 0;
+  width: 70%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.own {
+  margin-left: 27%;
+}
+.singleMessage #ownMessageText {
+  background-color: rgb(224, 224, 224);
+  color: black;
+}
+.singleMessage .message-text {
+  background-color: rgb(36, 130, 253);
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
+}
+.singleMessage-sender .message-text {
+  background-color: rgb(36, 130, 253);
+}
+.messageDate,
+.messagerName {
+  font-size: 12px;
+  text-align: right;
+}
+
+.singleMessage-sender {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.newMessage {
+  position: absolute;
+  bottom: 1%;
+  left: 0;
+  width: 100%;
+}
+.newMessage textarea {
+  border-left: none;
+  border-right: none;
+}
+.newMessage textarea:focus {
+  box-shadow: none;
+  outline: none;
+  border-top: 2px solid var(--primary-color);
+  border-bottom: 1px solid lightgray;
+  border-left: none;
+  border-right: none;
+}
+.sendMessageBtn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 5px 20px;
+}
+.sendMessageBtn:hover {
+  background-color: #4348e2;
+  color: white;
+}
+.EmptyConversation {
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(207, 207, 207);
+}

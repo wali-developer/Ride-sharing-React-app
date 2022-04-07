@@ -3,12 +3,14 @@ import React, { useState, useEffect } from "react";
 import "./Admin_panel.css";
 import axios from "axios";
 import RideStatisticsApi from "./RideStatisticsApi";
+import RequestRides from "./RequestRides";
 
 const AdminDashboard = () => {
   const [ridersLength, setRidersLength] = useState(0);
   const [completedRides, setCompletedRides] = useState(0);
   const [cancelledRides, setCancelledRides] = useState(0);
   const [runningRides, setRunningRides] = useState(0);
+  const [inactiveRides, setInactiveRides] = useState([]);
 
   useEffect(() => {
     const getStatistics = async () => {
@@ -42,6 +44,12 @@ const AdminDashboard = () => {
         // const totalRiders = data.map((ride) => {
         //   return ride.riderId;
         // }
+
+        // function to filter inactive rides
+        const filterInactiveRides = data.filter((ride) => {
+          return ride.status === "Inactive";
+        });
+        setInactiveRides(filterInactiveRides);
       } catch (error) {
         console.log(error);
       }
@@ -144,6 +152,29 @@ const AdminDashboard = () => {
             );
           })}
         </div>
+        {inactiveRides.map((ride) => {
+          const {
+            _id,
+            goingfrom,
+            goingto,
+            name,
+            passenger,
+            // status,
+            date,
+            email,
+          } = ride;
+          return (
+            <RequestRides
+              id={_id}
+              goingfrom={goingfrom}
+              goingto={goingto}
+              name={name}
+              passenger={passenger}
+              date={date}
+              email={email}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import places from "../../placesApi/places.js";
+import { toast } from "react-toastify";
 
 const HeaderRideSearch = () => {
   const [passengerNeeded, setPassengerNeeded] = useState(0);
@@ -46,11 +47,11 @@ const HeaderRideSearch = () => {
             goingTo: formData.goingTo,
             date: formData.date,
             passengerNeeded: passengerNeeded,
-            data,
+            data: data,
           },
         });
       } else {
-        alert("Please fill all the fields");
+        toast.warn("Please fill all the fields");
       }
     } catch (err) {
       console.log(err);

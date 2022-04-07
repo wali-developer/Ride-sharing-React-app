@@ -4,38 +4,76 @@ import Navbar from "../Header/Navbar";
 import "./search.css";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 const BookingRide = () => {
   const history = useHistory();
+  const [rideDetails, setRideDetails] = useState(history.location.state);
+  const [passenger, setPassenger] = useState(
+    history.location.state.formData.passengerNeeded
+  );
+
+  useEffect(() => {
+    const getPublisherDetails = async () => {
+      const { data } = await axios.get("http://localhost:3001/user/register");
+      data.filter((user) => {
+        if (user.email === rideDetails.email) {
+          setPublisherId(user._id);
+        }
+      });
+    };
+    getPublisherDetails();
+  }, []);
 
   const [emailSender, setEmailSender] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-  const [ridePublisher, setRidePublisher] = useState(history.location.state);
 
-  const [form, setForm] = useState({
-    from: emailSender.email,
-    to: ridePublisher.email,
-    subject: "Booking a Ride",
-    message: `Hi ${ridePublisher.name}, I would like to book a ride that you have published from ${ridePublisher.goingfrom} to ${ridePublisher.goingto} on ${ridePublisher.date}.`,
+  const [publisherId, setPublisherId] = useState("");
+
+  const [formData, setFormData] = useState({
+    goingfrom: rideDetails.goingfrom,
+    goingto: rideDetails.goingto,
+    passenger: passenger,
+    rideStatus: rideDetails.status,
+    rideDate: rideDetails.date,
+    requestStatus: "Pending",
+    bookerEmail: emailSender.email,
+    // publisherId: publisherUserId,
+    bookerId: emailSender._id,
+    rideId: rideDetails.publishRideId,
   });
 
-  const HandleSendEmail = async (e) => {
+  const handleRideBooking = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:3001/user/send-mail",
-        {
-          //   subject: form.subject,
-          text: form.message,
-          sender: form.from,
-          receiver: form.to,
-        }
-      );
-      alert(data);
+      const { data } = await axios.post("http://localhost:3001/requestride", {
+        goingfrom: formData.goingfrom,
+        goingto: formData.goingto,
+        passenger: formData.passenger,
+        rideStatus: formData.rideStatus,
+        bookingDate: formData.rideDate,
+        requestStatus: formData.requestStatus,
+        bookerEmail: formData.bookerEmail,
+        publisherId: publisherId,
+        bookerId: formData.bookerId,
+        rideId: formData.rideId,
+      });
+      addBookerToConversation();
+      toast.success(data);
+      history.push("/user-dashboard/messaging");
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const addBookerToConversation = async (e) => {
+    await axios.post("http://localhost:3001/conversations", {
+      senderId: emailSender._id,
+      receiverId: publisherId,
+    });
   };
 
   return (
@@ -45,69 +83,160 @@ const BookingRide = () => {
         <div className="container">
           <div className="contact">
             <div className=" contactCol1">
-              <h1>Connect with Ride Publisher</h1>
+              <h1>Book your Ride</h1>
               <p>
-                Send a message to Ride publisher to let him know you are booking
-                his ride.
+                Send a Request to Ride publisher to let him know you are booking
               </p>
             </div>
             <div className=" contactCol2">
               {/* Form */}
-              <form onSubmit={(e) => HandleSendEmail(e)}>
+              <form onSubmit={(e) => handleRideBooking(e)}>
                 <div className="row inputs">
-                  <div className="col-12 col-lg-6 mb-3">
-                    <label for="publisher email" className="form-label">
-                      From
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      onChange={(e) =>
-                        setForm({ ...form, from: e.target.value })
-                      }
-                      value={form.from}
-                    />
-                  </div>
                   <div className="col-12 col-lg-6 mb-4">
-                    <label for="sender email" className="form-label">
-                      To
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      onChange={(e) => setForm({ ...form, to: e.target.value })}
-                      value={form.to}
-                    />
-                  </div>
-                  <div className="col-12 col-lg-12 mb-4">
-                    <label for="Subject" className="form-label">
-                      Subject
+                    <label htmlFor="publisher email" className="form-label">
+                      Going From
                     </label>
                     <input
                       type="text"
                       className="form-control"
+                      name="goingfrom"
                       onChange={(e) =>
-                        setForm({ ...form, subject: e.target.value })
+                        setFormData({ ...formData, goingfrom: e.target.value })
                       }
-                      value={form.subject}
+                      value={formData.goingfrom}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-6 mb-4">
+                    <label htmlFor="sender email" className="form-label">
+                      Going To
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="goingto"
+                      onChange={(e) =>
+                        setFormData({ ...formData, goingto: e.target.value })
+                      }
+                      value={formData.goingto}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-6 mb-4">
+                    <label htmlFor="sender email" className="form-label">
+                      passengers
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="passenger"
+                      onChange={(e) => setPassenger(e.target.value)}
+                      value={passenger}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-6 mb-4">
+                    <label htmlFor="sender email" className="form-label">
+                      Ride Status
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="rideStatus"
+                      onChange={(e) =>
+                        setFormData({ ...formData, rideStatus: e.target.value })
+                      }
+                      value={formData.rideStatus}
                     />
                   </div>
                   <div className="col-12 col-lg-12 mb-4">
-                    <label for="Message" class="form-label">
-                      Message
+                    <label htmlFor="Subject" className="form-label">
+                      Ride booking Date
                     </label>
-                    <textarea
+                    <input
+                      type="text"
                       className="form-control"
-                      rows="3"
+                      name="bookingDate"
                       onChange={(e) =>
-                        setForm({ ...form, message: e.target.value })
+                        setFormData({ ...formData, rideDate: e.target.value })
                       }
-                      value={form.message}
-                    ></textarea>
+                      value={formData.rideDate}
+                    />
                   </div>
-                  <button type="submit" class="btn btn-primary formBtn">
-                    Submit
-                  </button>
+                  <div className="col-12 col-lg-12 mb-4">
+                    <label htmlFor="Subject" className="form-label">
+                      Your email (Your email must be an email that you used for
+                      registration)
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      name="bookerEmail"
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          bookerEmail: e.target.value,
+                        })
+                      }
+                      value={formData.bookerEmail}
+                    />
+                  </div>
+                  <div className="col-12 col-lg-4 mb-4">
+                    <label htmlFor="publisher id" className="form-label">
+                      Ride publisher ID
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="publisherId"
+                      onChange={(e) => console.log("Cannot change this field")}
+                      value={publisherId}
+                      disabled
+                    />
+                  </div>
+                  <div className="col-12 col-lg-4 mb-4">
+                    <label htmlFor="publisher id" className="form-label">
+                      Ride Booker ID
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="bookerId"
+                      onChange={(e) => console.log("Cannot change this field")}
+                      value={formData.bookerId}
+                      disabled
+                    />
+                  </div>
+                  <div className="col-12 col-lg-4 mb-4">
+                    <label htmlFor="publisher id" className="form-label">
+                      Ride ID
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="rideId"
+                      onChange={(e) => console.log("Can't change id")}
+                      value={formData.rideId}
+                      disabled
+                    />
+                  </div>
+
+                  <div className="d-flex justify-content-between">
+                    <button
+                      type="submit"
+                      className="btn btn-primary primaryBtn"
+                    >
+                      Book Ride
+                    </button>
+                    <button
+                      type="submit"
+                      className="btn btn-primary primaryBtn"
+                    >
+                      Click to Send Mail to publisher
+                    </button>
+                  </div>
+                  <Link to="/" className="mt-4">
+                    <p>
+                      <BsArrowLeft /> Go back to Home page
+                    </p>
+                  </Link>
                 </div>
               </form>
             </div>

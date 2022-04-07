@@ -40,7 +40,8 @@
 }
 
 input:focus {
-  border: none;
+  border: 1px solid var(--primary-color);
+  box-shadow: none;
 }
 .forgot,
 .alreadyAccount {

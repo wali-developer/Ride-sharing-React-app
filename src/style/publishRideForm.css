@@ -19,7 +19,8 @@
   font-weight: 700;
   text-align: center;
 }
-.publish-ride-form input {
+.publish-ride-form input,
+.publish-ride-form select {
   padding: 10px 20px;
   background-color: rgb(243, 243, 243);
   border-radius: 30px;

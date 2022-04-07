@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./rideServices.css";
-// import { FaAddressCard } from "react-icons/fa";
 import servicesApi from "./serviceApi";
 
 const RideServices = () => {

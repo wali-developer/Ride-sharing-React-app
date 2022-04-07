@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UserProfileEdit = () => {
   const history = useHistory();
@@ -54,7 +55,7 @@ const UserProfileEdit = () => {
         `http://localhost:3001/user/${user.id}`,
         user
       );
-      alert(data);
+      toast.success(data);
     } catch (err) {
       console.log(err);
     }

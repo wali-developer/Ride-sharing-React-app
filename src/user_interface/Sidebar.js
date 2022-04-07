@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Sidebar = () => {
   const [userName, setUserName] = useState("");
@@ -12,7 +13,7 @@ const Sidebar = () => {
   const Logout = () => {
     localStorage.clear();
     window.location.href = "/";
-    alert("You are successfully logout...");
+    toast.success("You are successfully logout...", { position: "top-center" });
   };
   return (
     <div className="col-md-3 sidebar">
@@ -45,6 +46,16 @@ const Sidebar = () => {
             <li className="nav-item">
               <Link to="/user-dashboard/riderequest" className="nav-link">
                 Request for Ride
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/user-dashboard/my-ride-requests" className="nav-link">
+                My Ride Requests
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/user-dashboard/messaging" className="nav-link">
+                Messaging
               </Link>
             </li>
 

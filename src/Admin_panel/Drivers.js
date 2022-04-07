@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import UserCard from "./UserCard";
 
 const Drivers = () => {
@@ -24,12 +25,11 @@ const Drivers = () => {
 
     const filterDriver = drivers.filter((driver) => driver.fullName === search);
     if (filterDriver.length === 0) {
-      alert("No driver found with provided name");
+      toast.error("No driver found with provided name");
     } else {
       setSearhUser(filterDriver);
     }
     setSearhUser(filterDriver);
-    console.log(filterDriver);
   };
   return (
     <div className="col-md-9 userProfile-main">

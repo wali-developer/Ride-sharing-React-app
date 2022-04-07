@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const SideBar = () => {
   const [userName, setUserName] = useState("");
@@ -14,7 +15,7 @@ const SideBar = () => {
   const Logout = () => {
     localStorage.clear();
     window.location.href = "/";
-    alert("You are successfully logout...");
+    toast.success("You are successfully logout...");
   };
   return (
     <div className="col-md-3 sidebar">

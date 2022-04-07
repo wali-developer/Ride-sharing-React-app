@@ -1,40 +1,48 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BsArrowRight } from "react-icons/bs";
+import RideRequestCard from "./RideRequestCard";
 
 const UserDashboard = () => {
   const [userPublishride, setUserPublishRide] = useState([]);
-  // const [user, setUser] = useState();
+  const [requestedRides, setRequestedRides] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
   const userEmail = user.email;
 
-  const getUserPublishRide = async () => {
-    const { data } = await axios.get("http://localhost:3001/publishride");
-    const userPublishRides = data.filter((ride) => {
-      return ride.email === userEmail;
-    });
-    setUserPublishRide(userPublishRides);
-  };
   useEffect(() => {
     axios.get("http://localhost:3001/user/user-dashboard", {
       headers: {
         token: localStorage.getItem("authToken"),
       },
     });
-    // setUser(JSON.parse(localStorage.getItem("user")));
+    const getUserPublishRide = async () => {
+      const { data } = await axios.get("http://localhost:3001/publishride");
+      const userPublishRides = data.filter((ride) => {
+        return ride.email === userEmail;
+      });
+      setUserPublishRide(userPublishRides);
+    };
+
+    const getRequestRides = async () => {
+      const { data } = await axios.get("http://localhost:3001/requestride");
+      setRequestedRides(data);
+    };
     getUserPublishRide();
-  }, []);
+    getRequestRides();
+
+    // console.log(history.location.state);
+  }, [userEmail]);
   return (
     <div className="col-md-9 userProfile-main">
       <div className="container">
-        <h2>Your Rides</h2>
+        <h2 className="text-center mb-5">Your Rides</h2>
         {/* {console.log(userPublishride)} */}
-        <div className="row">
+        <div className="row mb-5">
           {userPublishride.map((ride, index) => {
             const { goingfrom, goingto, date } = ride;
             return (
               <div
-                className="card border-success mb-3 me-3 col-6"
+                className="card border-success mb-3 me-3 col-5"
                 style={{ maxWidth: "18rem" }}
                 key={index}
               >
@@ -54,6 +62,34 @@ const UserDashboard = () => {
           })}
         </div>
       </div>
+      {requestedRides.map((ride, index) => {
+        const {
+          _id,
+          rideId,
+          goingfrom,
+          goingto,
+          rideStatus,
+          requestStatus,
+          date,
+          passenger,
+          publisherId,
+          bookerEmail,
+        } = ride;
+        return user._id === publisherId ? (
+          <RideRequestCard
+            key={index}
+            id={_id}
+            rideId={rideId}
+            goingfrom={goingfrom}
+            goingto={goingto}
+            rideStatus={rideStatus}
+            requestStatus={requestStatus}
+            date={date}
+            passenger={passenger}
+            bookerEmail={bookerEmail}
+          />
+        ) : null;
+      })}
     </div>
   );
 };

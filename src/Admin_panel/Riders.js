@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserCard from "./UserCard";
+import { toast } from "react-toastify";
 
 const Riders = () => {
   const [riders, setRiders] = useState([]);
@@ -25,7 +26,7 @@ const Riders = () => {
     const filterUser = riders.filter((user) => user.fullName === search);
     console.log(filterUser);
     if (filterUser.length === 0) {
-      alert("No user found");
+      toast.error("No user found");
     } else {
       setSearhUser(filterUser);
     }

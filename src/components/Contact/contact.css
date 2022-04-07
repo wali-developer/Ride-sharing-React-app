@@ -30,10 +30,18 @@
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
 }
+
 .inputs input,
 .inputs textarea {
   padding: 8px 12px;
   font-size: 14px;
+}
+.inputs input:focus,
+.inputs textarea:focus,
+.form-check-input:focus,
+.formBtn:focus {
+  box-shadow: none;
+  border: 1px solid var(--primary-color);
 }
 
 .inputs .form-check-input {
