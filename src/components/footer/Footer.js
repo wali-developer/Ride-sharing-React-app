@@ -38,7 +38,11 @@ const Footer = () => {
       <div className="">
         <div className="row FooterRow d-flex justify-content-around">
           <FooterLinks FooterCol={FooterCol} />
-          <div className="col-12 col-md-6 col-lg-4 FooterSocialCol">
+          <div
+            className="col-12 col-md-6 col-lg-4 FooterSocialCol"
+            // data-aos="zoom-in"
+            // data-aos-duration="1000"
+          >
             <h5>Connect with us</h5>
             <div className="social-links">
               <FaFacebook />

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Header/Navbar";
 import Footer from "../footer/Footer";
 import "../../style/form.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import AOS from "aos";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
+  const history = useHistory();
   const [formData, setFormData] = useState({
     fullName: "",
     userName: "",
@@ -32,13 +35,26 @@ const Register = () => {
     } catch (err) {
       console.log(err);
     }
+    setFormData({
+      fullName: "",
+      userName: "",
+      email: "",
+      password: "",
+      userType: "",
+    });
+    history.push("/login");
   };
+
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <>
       <Navbar />
       <section className="formContainer">
         <div className="container">
-          <div className="Register">
+          <div className="Register" data-aos="zoom-in" data-aos-duration="1200">
             <h2 className="text-center my-5">Register yourself on TrustiCar</h2>
             <form onSubmit={(e) => handleRegister(e)}>
               <div className="mb-4 input-group">

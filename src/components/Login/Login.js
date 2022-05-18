@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUserAlt, FaEye } from "react-icons/fa";
 import Footer from "../footer/Footer";
 import Navbar from "../Header/Navbar";
@@ -7,6 +7,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import AOS from "aos";
 
 const Login = () => {
   // state to store email and password details
@@ -40,12 +41,17 @@ const Login = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <>
       <Navbar />
       <section className="formContainer">
         <div className="container">
-          <div className="Login">
+          <div className="Login" data-aos="flip-right" data-aos-duration="1000">
             <h1>Welcome Back !</h1>
             <h2 className="text-start my-4">Login to your Account</h2>
             <form onSubmit={(e) => handleLogin(e)}>

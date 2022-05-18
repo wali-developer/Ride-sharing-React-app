@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BsArrowDown } from "react-icons/bs";
 import { GrLocation } from "react-icons/gr";
 import axios from "axios";
+import AOS from "aos";
 
 const MyRideRequests = () => {
   const [requestedRides, setRequestedRides] = useState([]);
@@ -29,6 +30,11 @@ const MyRideRequests = () => {
     getPublisher();
   }, []);
 
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
   return (
     <div className="col-md-9 userProfile-main">
       <div className="container">
@@ -44,7 +50,12 @@ const MyRideRequests = () => {
             bookerEmail,
           } = ride;
           return user.email === bookerEmail ? (
-            <div className="searchCard" key={index}>
+            <div
+              className="searchCard"
+              key={index}
+              data-aos="zoom-in"
+              data-aos-duration="1200"
+            >
               <div className="">
                 <div className="searchCard-content row">
                   <div className="searchCard-content-col col-sm-2 col-md-2">

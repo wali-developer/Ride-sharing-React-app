@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { MdOutlineSpaceDashboard, MdPersonOutline } from "react-icons/md";
-// import { FiUsers } from "react-icons/fi";
+import { MdOutlineDashboard, MdOutlineWbIridescent } from "react-icons/md";
+import { AiOutlineUser } from "react-icons/ai";
+import { FaUserTie } from "react-icons/fa";
+import {
+  IoCarSportOutline,
+  IoAddCircleOutline,
+  IoReturnUpForwardOutline,
+  IoCloseOutline,
+  IoPeopleOutline,
+  IoWalkOutline,
+} from "react-icons/io5";
 
 const UserMenu = ({ user }) => {
   const { userName, email } = user;
@@ -12,15 +21,13 @@ const UserMenu = ({ user }) => {
   };
   if (email === "waliullah@trusticar.com" && userName === "admin") {
     return (
-      <>
+      <section style={{ width: "350px", textAlign: "right" }}>
         <Link to="/admin-dashboard">
-          <button type="button" className="btn btn-outline-success login">
-            Admin Account
-          </button>
+          <span className="LoginUserName">{user.userName}</span>
+          <FaUserTie className="NavbarUserIcon" />
         </Link>
         <span
-          type="button"
-          className="btn btn-outline-success login dropdown-toggle dropdown-toggle-split"
+          className="dropdown-toggle dropdown-toggle-split"
           id="dropdownMenuReference"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -33,56 +40,54 @@ const UserMenu = ({ user }) => {
           className="dropdown-menu py-3"
           aria-labelledby="dropdownMenuReference"
         >
-          <li className="my-2">
-            {/* <MdOutlineSpaceDashboard /> */}
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <MdOutlineDashboard className="userMenuIcon" />
             <Link to={`/admin-dashboard`} className="dropdown-item">
-              Admin Dashboard
+              Admin Dashboard <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
-            {/* <MdPersonOutline /> */}
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <AiOutlineUser className="userMenuIcon" />
             <Link to="/admin-dashboard/profile" className="dropdown-item">
-              Admin Profile
+              Admin Profile <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
-            {/* <FiUsers /> */}
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <IoPeopleOutline className="userMenuIcon" />
             <Link to="/admin-dashboard/riders" className="dropdown-item">
-              Riders
+              Riders <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
-            {/* <FiUsers /> */}
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <MdOutlineWbIridescent className="userMenuIcon" />
             <Link to="/admin-dashboard/rides" className="dropdown-item">
-              Rides
+              Rides <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
-            {/* <FiUsers /> */}
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <IoWalkOutline className="userMenuIcon" />
             <Link to="/admin-dashboard/drivers" className="dropdown-item">
-              Drivers
+              Drivers <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
-            {/* <MdPersonOutline /> */}
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <IoCloseOutline className="userMenuIcon" />
             <Link to="/admin-dashboard/logout" className="dropdown-item">
-              Logout
+              Logout <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
         </ul>
-      </>
+      </section>
     );
   } else {
     return (
-      <>
+      <section style={{ width: "350px", textAlign: "right" }}>
         <Link to="/user-dashboard">
-          <button type="button" className="btn btn-outline-success login">
-            My Account
-          </button>
+          <span className="LoginUserName">{user.fullName}</span>
+          <FaUserTie className="NavbarUserIcon" />
         </Link>
         <span
-          type="button"
-          className="btn btn-outline-success login dropdown-toggle dropdown-toggle-split"
+          className="dropdown-toggle dropdown-toggle-split"
           id="dropdownMenuReference"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -93,35 +98,39 @@ const UserMenu = ({ user }) => {
         <ul
           className="dropdown-menu py-3"
           aria-labelledby="dropdownMenuReference"
-          style={{ width: "300px" }}
         >
-          <li className="my-2">
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <MdOutlineDashboard className="userMenuIcon" />
             <Link to={`/user-dashboard`} className="dropdown-item">
-              User Dashboard
+              User Dashboard <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <AiOutlineUser className="userMenuIcon" />
             <Link to="/user-dashboard/profile" className="dropdown-item">
-              User Profile
+              User Profile <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <IoAddCircleOutline className="userMenuIcon" />
             <Link to="/user-dashboard/publishride" className="dropdown-item">
-              Publish Ride
+              Publish Ride <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <IoCarSportOutline className="userMenuIcon" />
             <Link to="/user-dashboard/riderequest" className="dropdown-item">
-              Request for a Ride
+              Request for a Ride <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
-          <li className="my-2">
+          <li className="my-2 d-flex align-items-center userMenuRow">
+            <IoCloseOutline className="userMenuIcon" />
             <Link to="/" className="dropdown-item" onClick={handleLogout}>
-              Logout
+              Logout <IoReturnUpForwardOutline className="mx-3" />
             </Link>
           </li>
         </ul>
-      </>
+      </section>
     );
   }
 };

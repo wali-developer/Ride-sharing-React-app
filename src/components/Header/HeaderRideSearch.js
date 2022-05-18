@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import places from "../../placesApi/places.js";
 import { toast } from "react-toastify";
+import AOS from "aos";
 
 const HeaderRideSearch = () => {
   const [passengerNeeded, setPassengerNeeded] = useState(0);
@@ -59,7 +60,7 @@ const HeaderRideSearch = () => {
   };
 
   return (
-    <>
+    <section data-aos="fade-right" data-aos-duration="1200">
       <h2>Search for a Ride</h2>
       <form onSubmit={(e) => handleSearch(e)}>
         <div className="mb-3">
@@ -126,7 +127,7 @@ const HeaderRideSearch = () => {
           </div>
         </div>
       </form>
-    </>
+    </section>
   );
 };
 

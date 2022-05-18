@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import "../../style/publishRideForm.css";
 import axios from "axios";
@@ -57,7 +57,7 @@ const PulishRideFormCard = () => {
   };
 
   return (
-    <div>
+    <div data-aos="fade-left" data-aos-duration="1200">
       <h1 className="text-center my-5">Publish Your Ride</h1>
       <form onSubmit={(e) => publishRideHandle(e)}>
         <div className="mb-4 input-group">

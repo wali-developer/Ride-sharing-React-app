@@ -3,6 +3,7 @@ import SinglePopularRide from "./SinglePopularRide";
 import "./popularRides.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import AOS from "aos";
 
 const PopularRides = () => {
   const [show, setShow] = useState(false);
@@ -19,11 +20,17 @@ const PopularRides = () => {
     };
     fetchPopularRides();
   });
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <>
       <section className="popularRides">
         <div className="container">
-          <h2>Our Popular and Latest Rides</h2>
+          <h2 data-aos="zoom-in" data-aos-duration="1000">
+            Our Popular and Latest Rides
+          </h2>
           <div className="row popularRidesRow">
             <SinglePopularRide GoingFrom="Peshawar" GoingTo="Islamabad" />
             <SinglePopularRide GoingFrom="Lahore" GoingTo="Peshawar" />

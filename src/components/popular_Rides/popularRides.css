@@ -1,16 +1,20 @@
 .popularRides {
-  background-color: #898dff;
+  background-color: #f2f3f2;
   padding: 30px 0;
+  background: url("../../../public/images/header-bg.svg") no-repeat;
+  background-position: center;
+  width: 100%;
+  background-size: cover;
 }
 .popularRidesRow {
   padding: 30px;
 }
 .popularRides h2 {
   font-weight: 600;
-  color: white;
+  color: black;
   text-align: center;
   padding: 20px 0;
-  border-bottom: 1px solid white;
+  border-bottom: 2px solid gray;
 }
 .popularRidesCol {
   position: relative;
@@ -18,7 +22,7 @@
 .popularRidesCircle {
   width: 200px;
   height: 200px;
-  background-color: #fff;
+  background-color: var(--primary-color);
   border-radius: 50%;
   text-align: center;
   display: flex;
@@ -30,11 +34,12 @@
 .popularRidesCircle h6 {
   font-weight: 500;
   font-size: 19px;
+  color: #fff;
 }
 .popularRidesCircle .arrowIcon {
   font-size: 35px;
   margin: 10px 0;
-  color: var(--primary-color);
+  color: #fff;
 }
 .see-more {
   text-align: center;

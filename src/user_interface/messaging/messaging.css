@@ -150,3 +150,14 @@
   font-weight: 600;
   color: rgb(207, 207, 207);
 }
+
+.converUser {
+  position: relative;
+}
+.onlineUserIcon {
+  position: absolute;
+  top: 83%;
+  right: 7%;
+  color: green;
+  font-size: 17px;
+}

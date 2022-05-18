@@ -26,6 +26,7 @@ import BookingRide from "../components/Search/BookingRide.js";
 import MyRideReqPage from "../Pages/userInterface-pages/MyRideReqPage.js";
 import FilleUploadTest from "../components/test/FilleUploadTest.js";
 import MessagingPage from "../Pages/userInterface-pages/MessagingPage.js";
+import test2 from "../components/test/test2.js";
 
 function Routes() {
   return (
@@ -42,7 +43,8 @@ function Routes() {
           <Route path="/availablerides/book" component={BookingRide} />
           <Route path="/about" component={AboutUs} />
           <Route path="/contact" component={ContactUs} />
-          <Route path="/howitworks" components={Works} />
+          <Route path="/howitworks" component={Works} />
+          {/* <Route path="/formtest" component={Forms} /> */}
 
           {/* User Interface */}
           <Route path="/user-dashboard" exact component={UserDashboardPage} />
@@ -73,6 +75,7 @@ function Routes() {
 
           {/* <Route path="/test" component={Test} /> */}
           <Route path="/upload" component={FilleUploadTest} />
+          <Route path="/test2" component={test2} />
 
           {/* Admin Interface */}
           <Route path="/admin-dashboard" exact component={AdminPanel} />

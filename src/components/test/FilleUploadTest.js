@@ -3,13 +3,16 @@ import axios from "axios";
 
 const FilleUploadTest = () => {
   const [image, setImage] = React.useState();
+  const [user, setUser] = React.useState(
+    JSON.parse(localStorage.getItem("user"))
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", image);
     const { data } = await axios.post(
-      "http://localhost:3001/upload",
+      `http://localhost:3001/upload/ ${user._id}`,
       formData,
       {
         headers: {
@@ -18,6 +21,18 @@ const FilleUploadTest = () => {
       }
     );
     alert(data);
+  };
+
+  const takeImage = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.get(
+        `http://localhost:3001/uploads/${user._id}.jpg`
+      );
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
@@ -31,6 +46,7 @@ const FilleUploadTest = () => {
       </div>
       <div>
         <input type="submit" onClick={(e) => handleSubmit(e)} />
+        <input type="submit" value="take image" onClick={(e) => takeImage(e)} />
       </div>
     </>
   );

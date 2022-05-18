@@ -1,6 +1,6 @@
-import React from 'react';
-import './Footer.css';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const FooterLinks = ({ FooterCol }) => {
   return FooterCol.map((item, index) => {
@@ -16,7 +16,11 @@ const FooterLinks = ({ FooterCol }) => {
     } = item;
     return (
       <div className="col-12 col-sm-6 col-md-4 FooterRowCol" key={index}>
-        <ul className="nav flex-column">
+        <ul
+          className="nav flex-column"
+          // data-aos="zoom-in"
+          // data-aos-duration="1200"
+        >
           <li className="nav-item">
             <Link className="nav-link" to={link1url}>
               {link1}

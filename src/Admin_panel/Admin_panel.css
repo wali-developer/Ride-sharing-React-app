@@ -19,3 +19,15 @@
 .adminDashboardCard {
   margin: 0 auto;
 }
+.SidebarMenuItem {
+  border-bottom: 1px solid lightgray;
+}
+.SidebarMenuItem:hover {
+  background-color: #f1f1f1;
+}
+.sidebarMenuIcon {
+  width: 25px;
+  height: 25px;
+  margin: 0 7px;
+  color: var(--primary-color);
+}

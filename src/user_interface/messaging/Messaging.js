@@ -7,21 +7,29 @@ import axios from "axios";
 import { io } from "socket.io-client";
 
 const Messaging = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState({});
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const scrollRef = useRef();
   const [ConnectedRider, setConnectedRider] = useState([]);
-  const socket = useRef();
+  let socket = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
-    socket.current = io("http://localhost:8900");
+    const userData = JSON.parse(localStorage.getItem("user"));
+    if (userData) {
+      setUser(userData);
+    }
+  }, []);
+
+  useEffect(() => {
+    socket.current = io("ws://localhost:8900");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
-        senderId: data.senderId,
+        sender: data.senderId,
         text: data.text,
         date: Date.now(),
       });
@@ -37,9 +45,12 @@ const Messaging = () => {
   useEffect(() => {
     socket.current.emit("addUser", user._id);
     socket.current.on("getUsers", (users) => {
-      console.log(users);
+      // console.log(users);
+      if (users) {
+        setOnlineUsers(users);
+      }
     });
-  }, [user, socket]);
+  }, [user]);
 
   useEffect(() => {
     const getConversations = async () => {
@@ -132,6 +143,7 @@ const Messaging = () => {
                     <Conversation
                       conversation={conversation}
                       currentUser={user}
+                      onlineUsers={onlineUsers}
                     />
                   </div>
                 );

@@ -12,7 +12,7 @@
 
 .myNavBar .navbar-brand,
 .Logo .navbar-brand {
-  font-size: 1.8rem;
+  font-size: 2.3rem;
   font-weight: bold;
   color: var(--headingColor);
 }
@@ -23,7 +23,10 @@
 .navbar-light .navbar-nav .nav-link {
   color: var(--primary-color);
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 600;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #363bbb;
 }
 
 .navbarButtons .btn,
@@ -40,6 +43,20 @@
   background-color: #fff;
   border-color: var(--primary-color);
   outline: none;
+}
+.NavbarUserIcon {
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #f1f1f1;
+}
+.dropdown-toggle {
+  margin: auto 5px;
+  font-size: 25px;
+  cursor: pointer;
 }
 .navbarButtons .login .user {
   margin-right: 6px;
@@ -139,4 +156,44 @@
 .header .mainRowCol2 {
   width: 50%;
   margin-left: 30px;
+}
+.LoginUserName {
+  color: var(--headingColor);
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 15px 0 0;
+}
+
+.dropdown-menu {
+  width: 350px;
+  margin: 0 auto;
+  border: none;
+  box-shadow: 0px 18px 16px 0px rgba(0, 0, 0, 0.25);
+}
+.userMenuRow {
+  padding: 10px 30px;
+  border-bottom: 1px solid lightgray;
+}
+.userMenuRow:last-child {
+  border-bottom: none;
+}
+.userMenuRow:hover {
+  background-color: #f1f1f1;
+}
+.userMenuRow .dropdown-item:hover {
+  background-color: unset;
+}
+.userMenuIcon {
+  width: 35px;
+  height: 35px;
+  margin: 0 7px;
+  color: var(--headingColor);
+}
+.userMenuIcon:hover {
+  color: var(--primary-color);
+}
+.userMenuRow .dropdown-item {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--headingColor);
 }

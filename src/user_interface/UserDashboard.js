@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BsArrowRight } from "react-icons/bs";
 import RideRequestCard from "./RideRequestCard";
+import AOS from "aos";
 
 const UserDashboard = () => {
   const [userPublishride, setUserPublishRide] = useState([]);
@@ -32,6 +33,11 @@ const UserDashboard = () => {
 
     // console.log(history.location.state);
   }, [userEmail]);
+
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <div className="col-md-9 userProfile-main">
       <div className="container">
@@ -45,6 +51,8 @@ const UserDashboard = () => {
                 className="card border-success mb-3 me-3 col-5"
                 style={{ maxWidth: "18rem" }}
                 key={index}
+                data-aos="fade-up"
+                data-aos-duration="1200"
               >
                 <div className="card-header bg-transparent border-success">
                   {goingfrom} <BsArrowRight /> {goingto}

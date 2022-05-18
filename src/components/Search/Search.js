@@ -61,12 +61,21 @@ const Search = () => {
             <span> {numberOfAvailableRides} rides available</span>
           </div>
           {publishRides.map((publishRide, index) => {
-            const { goingfrom, goingto, date, name, email, status, _id } =
-              publishRide;
+            const {
+              goingfrom,
+              goingto,
+              date,
+              name,
+              email,
+              status,
+              _id,
+              passenger,
+            } = publishRide;
             console.log(publishRide);
             return (
               goingfrom === formData.goingFrom &&
-              goingto === formData.goingTo && (
+              goingto === formData.goingTo &&
+              passenger > 0 && (
                 <SearchedCard
                   index={index}
                   goingfrom={goingfrom}
@@ -76,6 +85,7 @@ const Search = () => {
                   date={date}
                   status={status}
                   publishRideId={_id}
+                  passenger={passenger}
                   formData={formData}
                 />
               )
