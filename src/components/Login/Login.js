@@ -22,6 +22,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      //Wrong way
       const { data } = await axios.post(
         "http://localhost:3001/user/login",
         formData

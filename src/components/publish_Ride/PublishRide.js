@@ -30,7 +30,7 @@ const PublishRide = () => {
         >
           <div className="col-12 col-md-6 publish-rideRow-col1">
             <h2>Want to drive ?</h2>
-            <p>Let's make your journey more momoriable and comfortable.</p>
+            <p>Let's make your journey more momoriable and comfortable, <br /> Publish your own ride</p>
             <button className="btn btn-outline-success" onClick={handleClick}>
               Publish Your Ride
             </button>
