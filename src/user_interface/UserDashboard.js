@@ -31,7 +31,6 @@ const UserDashboard = () => {
     getUserPublishRide();
     getRequestRides();
 
-    // console.log(history.location.state);
   }, [userEmail]);
 
   useEffect(() => {

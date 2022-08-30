@@ -1,6 +1,5 @@
 import React from "react";
 import { FaAngleDoubleDown } from "react-icons/fa";
-import "./popularRides.css";
 
 const PopularRide = ({ GoingFrom, GoingTo }) => {
   return (

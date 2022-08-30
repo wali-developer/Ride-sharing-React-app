@@ -73,7 +73,7 @@ const AdminProfile = () => {
               className="form-control"
               disabled
               value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
+            // onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </div>
           <button className="btn btn-primary" onClick={(e) => handleUpdate(e)}>
