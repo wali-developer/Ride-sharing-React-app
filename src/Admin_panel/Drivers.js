@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import API from "../API";
 import UserCard from "./UserCard";
 
 const Drivers = () => {
@@ -11,7 +12,7 @@ const Drivers = () => {
   useEffect(() => {
     const getDrivers = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/user/register");
+        const { data } = await API.get("user/register");
         setDrivers(data.filter((driver) => driver.userType === "Driver"));
       } catch (err) {
         console.log(err);

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import API from '../API';
 
 const UserProfileEdit = () => {
   const history = useHistory();
@@ -51,8 +52,8 @@ const UserProfileEdit = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.patch(
-        `http://localhost:3001/user/${user.id}`,
+      const { data } = await API.patch(
+        `user/${user.id}`,
         user
       );
       toast.success(data);

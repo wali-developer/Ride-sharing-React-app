@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import API from "../../API";
 
 const FilleUploadTest = () => {
   const [image, setImage] = React.useState();
@@ -11,8 +12,8 @@ const FilleUploadTest = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("image", image);
-    const { data } = await axios.post(
-      `http://localhost:3001/upload/ ${user._id}`,
+    const { data } = await API.post(
+      `upload/ ${user._id}`,
       formData,
       {
         headers: {
@@ -26,8 +27,8 @@ const FilleUploadTest = () => {
   const takeImage = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(
-        `http://localhost:3001/uploads/${user._id}.jpg`
+      const res = await API.get(
+        `uploads/${user._id}.jpg`
       );
       console.log(res);
     } catch (err) {

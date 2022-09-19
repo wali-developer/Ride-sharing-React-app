@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import AOS from "aos";
 import { useHistory } from "react-router-dom";
+import API from '../../API';
 
 const Register = () => {
   const history = useHistory();
@@ -23,8 +24,8 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:3001/user/register",
+      const { data } = await API.post(
+        "user/register",
         formData
       );
       if (data === "User has already Register...") {

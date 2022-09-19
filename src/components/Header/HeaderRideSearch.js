@@ -6,6 +6,7 @@ import axios from "axios";
 import places from "../../placesApi/places.js";
 import { toast } from "react-toastify";
 import AOS from "aos";
+import API from "../../API";
 
 const HeaderRideSearch = () => {
   const [passengerNeeded, setPassengerNeeded] = useState(0);
@@ -39,7 +40,7 @@ const HeaderRideSearch = () => {
         formData.goingTo.length > 0 &&
         formData.date.length > 0
       ) {
-        const { data } = await axios.get("http://localhost:3001/publishride");
+        const { data } = await API.get("publishride");
         // setPublishRides(data);
         history.push({
           pathname: "/availablerides",

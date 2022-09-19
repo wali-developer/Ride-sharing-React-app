@@ -7,6 +7,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 import { toast } from "react-toastify";
+import API from '../../API';
 
 const BookingRide = () => {
   const history = useHistory();
@@ -17,7 +18,7 @@ const BookingRide = () => {
 
   useEffect(() => {
     const getPublisherDetails = async () => {
-      const { data } = await axios.get("http://localhost:3001/user/register");
+      const { data } = await API.get("user/register");
       data.filter((user) => {
         if (user.email === rideDetails.email) {
           setPublisherId(user._id);
@@ -49,7 +50,7 @@ const BookingRide = () => {
   const handleRideBooking = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:3001/requestride", {
+      const { data } = await API.post("requestride", {
         goingfrom: formData.goingfrom,
         goingto: formData.goingto,
         passenger: formData.passenger,
@@ -70,7 +71,7 @@ const BookingRide = () => {
   };
 
   const addBookerToConversation = async (e) => {
-    await axios.post("http://localhost:3001/conversations", {
+    await API.post("conversations", {
       senderId: emailSender._id,
       receiverId: publisherId,
     });

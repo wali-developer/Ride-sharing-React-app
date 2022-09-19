@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import "../../style/publishRideForm.css";
-import axios from "axios";
 import { toast } from "react-toastify";
+import API from '../../API';
 
 const PulishRideFormCard = () => {
   const [loginUser, setLoginUser] = useState(
@@ -38,7 +38,7 @@ const PulishRideFormCard = () => {
     e.preventDefault();
     // axios post request
     try {
-      const { data } = await axios.post("http://localhost:3001/publishride", {
+      const { data } = await API.post("publishride", {
         goingfrom: goingfrom,
         goingto: goingto,
         name: name,

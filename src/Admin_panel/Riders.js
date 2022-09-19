@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import UserCard from "./UserCard";
 import { toast } from "react-toastify";
+import API from "../API";
 
 const Riders = () => {
   const [riders, setRiders] = useState([]);
@@ -11,7 +11,7 @@ const Riders = () => {
   useEffect(() => {
     const getDrivers = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/user/register");
+        const { data } = await API.get("user/register");
         setRiders(data);
       } catch (err) {
         console.log(err);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import API from "../API";
 
 const AdminProfile = () => {
   const [user, setUser] = useState({
@@ -25,8 +26,8 @@ const AdminProfile = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.patch(
-        `http://localhost:3001/user/${user.id}`,
+      const { data } = await API.patch(
+        `user/${user.id}`,
         user
       );
       toast.success(data);

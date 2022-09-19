@@ -5,6 +5,7 @@ import Message from "./Message";
 import "./messaging.css";
 import axios from "axios";
 import { io } from "socket.io-client";
+import API from "../../API";
 
 const Messaging = () => {
   const [user, setUser] = useState({});
@@ -54,8 +55,8 @@ const Messaging = () => {
 
   useEffect(() => {
     const getConversations = async () => {
-      const { data } = await axios.get(
-        `http://localhost:3001/conversations/${user._id}`
+      const { data } = await API.get(
+        `conversations/${user._id}`
       );
       setConversations(data);
     };
@@ -64,8 +65,8 @@ const Messaging = () => {
 
   useEffect(() => {
     const getMessages = async () => {
-      const { data } = await axios.get(
-        `http://localhost:3001/messages/${currentChat?._id}`
+      const { data } = await API.get(
+        `messages/${currentChat?._id}`
       );
       setMessages(data);
     };
@@ -96,8 +97,8 @@ const Messaging = () => {
       });
 
       try {
-        const { data } = await axios.post(
-          "http://localhost:3001/messages",
+        const { data } = await API.post(
+          "messages",
           message
         );
         setMessages([...messages, data]);

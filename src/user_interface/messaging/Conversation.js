@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { format } from "timeago.js";
 import { IoLogoIonic } from "react-icons/io5";
+import API from "../../API";
 
 const Conversation = ({ conversation, currentUser, onlineUsers }) => {
   const [connectRider, setConnectRider] = useState([]);
@@ -13,8 +14,8 @@ const Conversation = ({ conversation, currentUser, onlineUsers }) => {
     );
 
     const getConnectRider = async () => {
-      const { data } = await axios.get(
-        "http://localhost:3001/user/" + connectRiderId
+      const { data } = await API.get(
+        "user/" + connectRiderId
       );
       setConnectRider(data);
     };

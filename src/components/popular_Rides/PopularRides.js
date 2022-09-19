@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import SinglePopularRide from "./SinglePopularRide";
 import "./popularRides.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import AOS from "aos";
+import API from "../../API";
 
 const PopularRides = () => {
   const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ const PopularRides = () => {
   useEffect(() => {
     const fetchPopularRides = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/publishride");
+        const { data } = await API.get("publishride");
         setPopularRides(data);
       } catch (err) {
         console.log(err);

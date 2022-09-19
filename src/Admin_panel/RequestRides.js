@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { toast } from "react-toastify";
+import API from "../API";
 
 const RequestRides = ({
   id,
@@ -15,8 +16,8 @@ const RequestRides = ({
   const handleApprove = async (id) => {
     const status = "Active";
     try {
-      const { data } = await axios.patch(
-        `http://localhost:3001/publishride/${id}`,
+      const { data } = await API.patch(
+        `publishride/${id}`,
         status
       );
       toast.info(data);
@@ -27,8 +28,8 @@ const RequestRides = ({
 
   const handleDisapprove = async () => {
     try {
-      const { data } = await axios.delete(
-        `http://localhost:3001/publishride/${id}`
+      const { data } = await API.delete(
+        `publishride/${id}`
       );
       toast.info(data);
     } catch (err) {

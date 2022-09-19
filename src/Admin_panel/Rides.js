@@ -1,14 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import SearchedCard from "../components/Search/SearchedCard";
+import API from "../API";
 
 const Rides = () => {
   const [rides, setRides] = useState([]);
   useEffect(() => {
     const getPublishRides = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/publishride");
+        const { data } = await API.get("publishride");
         setRides(data);
       } catch (err) {
         console.log(err);

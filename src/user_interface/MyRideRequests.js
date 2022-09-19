@@ -3,6 +3,7 @@ import { BsArrowDown } from "react-icons/bs";
 import { GrLocation } from "react-icons/gr";
 import axios from "axios";
 import AOS from "aos";
+import API from "../API";
 
 const MyRideRequests = () => {
   const [requestedRides, setRequestedRides] = useState([]);
@@ -13,7 +14,7 @@ const MyRideRequests = () => {
 
   useEffect(() => {
     const getRequestRides = async () => {
-      const { data } = await axios.get("http://localhost:3001/requestride");
+      const { data } = await API.get("requestride");
       data.map((ride) => {
         setPublisherId(ride.publisherId);
         setRejectionReason(ride.rejectionReason);
@@ -21,7 +22,7 @@ const MyRideRequests = () => {
       setRequestedRides(data);
     };
     const getPublisher = async () => {
-      const { data } = await axios.get("http://localhost:3001/user/register");
+      const { data } = await API.get("user/register");
       const filterUser = data.filter((user) => user._id === publisherId);
       setPublisherUser(filterUser);
     };

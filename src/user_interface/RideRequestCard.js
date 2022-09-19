@@ -3,6 +3,7 @@ import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import API from "../API";
 
 const RideRequestCard = ({
   id,
@@ -21,11 +22,11 @@ const RideRequestCard = ({
   // handle approve ride request
   const handleApprove = async () => {
     try {
-      await axios.patch(`http://localhost:3001/publishride/${rideId}`, {
+      await API.patch(`publishride/${rideId}`, {
         passenger: passenger - passenger,
       });
-      const { data } = await axios.patch(
-        `http://localhost:3001/requestride/${id}`,
+      const { data } = await API.patch(
+        `requestride/${id}`,
         {
           requestStatus: "Accepted",
         }
@@ -43,8 +44,8 @@ const RideRequestCard = ({
   // handle disapprove ride request
   const handleDisapprove = async () => {
     try {
-      const { data } = await axios.patch(
-        `http://localhost:3001/requestride/${id}`,
+      const { data } = await API.patch(
+        `requestride/${id}`,
         {
           requestStatus: "Rejected",
           rejectionReason: rejectionMessage,

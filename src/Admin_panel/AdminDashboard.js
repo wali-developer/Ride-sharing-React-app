@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import "./Admin_panel.css";
-import axios from "axios";
 import RideStatisticsApi from "./RideStatisticsApi";
 import RequestRides from "./RequestRides";
+import API from "../API";
 
 const AdminDashboard = () => {
   const [ridersLength, setRidersLength] = useState(0);
@@ -15,7 +15,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const getStatistics = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3001/publishride");
+        const { data } = await API.get("/publishride");
         setRidersLength(data.length);
         console.log(`Riders Length: ${data.length}`);
 
@@ -58,8 +58,8 @@ const AdminDashboard = () => {
 
     // get admin dashboard route when user login
     const getAdminDashboard = async () => {
-      const { data } = await axios.get(
-        "http://localhost:3001/user/user-dashboard",
+      const { data } = await API.get(
+        "user/user-dashboard",
         {
           headers: {
             token: localStorage.getItem("authToken"),

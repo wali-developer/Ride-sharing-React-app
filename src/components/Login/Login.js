@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import AOS from "aos";
+import API from "../../API";
 
 const Login = () => {
   // state to store email and password details
@@ -23,8 +24,8 @@ const Login = () => {
     e.preventDefault();
     try {
       //Wrong way
-      const { data } = await axios.post(
-        "http://localhost:3001/user/login",
+      const { data } = await API.post(
+        "user/login",
         formData
       );
       if (!data.token && !data.user) {

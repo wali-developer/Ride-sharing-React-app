@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { BsArrowRight } from "react-icons/bs";
 import RideRequestCard from "./RideRequestCard";
 import AOS from "aos";
+import API from "../API";
 
 const UserDashboard = () => {
   const [userPublishride, setUserPublishRide] = useState([]);
@@ -11,13 +11,13 @@ const UserDashboard = () => {
   const userEmail = user.email;
 
   useEffect(() => {
-    axios.get("http://localhost:3001/user/user-dashboard", {
+    API.get("user/user-dashboard", {
       headers: {
         token: localStorage.getItem("authToken"),
       },
     });
     const getUserPublishRide = async () => {
-      const { data } = await axios.get("http://localhost:3001/publishride");
+      const { data } = await API.get("publishride");
       const userPublishRides = data.filter((ride) => {
         return ride.email === userEmail;
       });
@@ -25,7 +25,7 @@ const UserDashboard = () => {
     };
 
     const getRequestRides = async () => {
-      const { data } = await axios.get("http://localhost:3001/requestride");
+      const { data } = await API.get("requestride");
       setRequestedRides(data);
     };
     getUserPublishRide();

@@ -3,8 +3,8 @@ import Footer from "../footer/Footer";
 import Navbar from "../Header/Navbar";
 import "./search.css";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
+import API from '../../API';
 
 const BookingRide = () => {
   const history = useHistory();
@@ -24,8 +24,8 @@ const BookingRide = () => {
   const HandleSendEmail = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:3001/user/send-mail",
+      const { data } = await API.post(
+        "user/send-mail",
         {
           //   subject: form.subject,
           text: form.message,
